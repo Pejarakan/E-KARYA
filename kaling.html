@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Statistik Penduduk Kelurahan Pejarakan Karya</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(180deg, #EAF4FF, #F5F9FF);
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        header {
+            position: relative;
+            overflow: hidden;
+            height: 300px;
+            background: linear-gradient(to right, #007CF0, #00DFD8);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header img {
+            width: 100%;
+            height: 100%;
+            /* penting: isi penuh tinggi header */
+            object-fit: contain;
+            /* isi penuh tanpa meninggalkan ruang */
+            background-color: #EAF4FF;
+            /* Opsional: untuk ruang kosong di bawah/atas */
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        header img.active {
+            opacity: 1;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin: 30px 20px 10px;
+            color: #0077cc;
+            animation: fadeIn 1s ease;
+        }
+        
+        .container {
+            padding: 30px;
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease;
+        }
+        
+        .gif-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: auto;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* Dua kolom */
+            gap: 5px;
+            justify-content: center;
+            padding: 5px;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .menu button {
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(to bottom right, #001f4d, #0056b3);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .menu button:hover {
+            background: linear-gradient(to right, #3B4CCA, #6C63FF);
+            transform: translateY(-2px);
+        }
+        
+        .statistics {
+            display: none;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .statistics.active {
+            display: block;
+        }
+        
+        .statistics h3 {
+            color: #3B4CCA;
+            margin-top: 0;
+        }
+        
+        .statistics ul {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .statistics li {
+            margin-bottom: 6px;
+        }
+        
+        .statistics .profile {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #f1f7ff;
+            border-left: 5px solid #007CF0;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .statistics .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #007CF0;
+        }
+        
+        .statistics .profile div {
+            flex: 1;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to right, #007CF0, #00DFD8);
+            color: white;
+            margin-top: 30px;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            header {
+                height: 200px;
+            }
+            header img {
+                height: 200px;
+            }
+            h1 {
+                font-size: 15px;
+            }
+            .menu button {
+                width: 100%;
+                font-size: 14px;
+            }
+            .statistics .profile {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .statistics .profile img {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header> <img alt="Slide 1" class="active" src="images/banner/banner 1.jpg?text=Gambar+1" /> <img alt="Slide 2" src="images/banner/banner 2.jpg?text=Gambar+2" /> <img alt="Slide 3" src="images/banner/banner 3.jpg?text=Gambar+3" /> <img alt="Slide 4" src="images/banner/banner 4.jpg?text=Gambar+4" /> <img alt="Slide 5" src="images/banner/banner 5.jpg?text=Gambar+5" /> </header>
+    <div class="gif-container"> <img alt="Animasi GIF" src="animation/warga.gif" /> </div>
+    <h1>INFO &amp; STATISTIK<br/>Warga Lingkungan Kelurahan Pejarakan Karya Ampenan</h1>
+    <div class="container">
+        <div class="menu">
+            <button onclick="showStatistics('moncokKarya')">MONCOK KARYA</button>
+            <button onclick="showStatistics('moncokTelagaMas')">MONCOK
+                <br/>TELAGA MAS</button>
+            <button onclick="showStatistics('pejarakan')">PEJARAKAN</button>
+            <button onclick="showStatistics('penan')">PENAN</button>
+        </div>
+        <!-- LINGKUNGAN MONCOK KARYA -->
+        <div class="statistics" id="moncokKarya">
+            <h4 style="text-align: center;">LINGKUNGAN<br/>MONCOK KARYA<br/>(Periode 2024)</h4>
+            <div class="profile"> <img alt="Kepala Lingkungan PENAN" src="images/kaling/Moncok.jpg" style="display: block; margin: 0 auto;" />
+                <div> <strong>KEPALA LINGKUNGAN</strong>
+                    <br/> <strong>Nama:</strong> Bapak Sapri, S. Sos
+                    <br/> <strong>Usia:</strong> 55 Tahun
+                    <br/> <strong>Pendidikan:</strong> S1
+                    <br/> <strong>Status Pernikahan:</strong> Menikah
+                    <br/> </div>
+            </div>
+            <ul>
+                <li>Total Penduduk: 2509</li>
+                <li>Berdasarkan Jenis Kelamin:</li>
+                <li>
+                    <ul>
+                        <li>Laki: 1320</li>
+                        <li>Perempuan: 1189</li>
+                    </ul>
+                </li>
+                <li>Mayoritas Pekerjaan Warga: Petani</li>
+                <li>Mata Pencaharian Utama: Petani Sayur</li>
+                <li>Status Pernikahan:
+                    <ul>
+                        <li>Menikah: 1564</li>
+                        <li>Lajang: 945</li>
+                    </ul>
+                </li>
+                <li>Jumlah Lembaga Pendidikan:
+                    <ul>
+                        <li>Play Group Swasta: 2</li>
+                        <li>SD Negeri: 1</li>
+                        <li>SD Swasta: -</li>
+                        <li>SMP: -</li>
+                        <li>SMA: -</li>
+                        <li>Lembaga Kursus: 2</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- LINGKUNGAN MONTELA-->
+        <div class="statistics" id="moncokTelagaMas">
+            <h4 style="text-align: center;">LINGKUNGAN MONTELA<br/>(Periode 2024)</h4>
+            <div class="profile"> <img alt="Kepala Lingkungan PENAN" src="images/kaling/Montela.jpg" style="display: block; margin: 0 auto;" />
+                <div> <strong>KEPALA LINGKUNGAN</strong>
+                    <br/> <strong>Nama:</strong> Bapak Subki, S. Adm
+                    <br/> <strong>Usia:</strong> 56 Tahun
+                    <br/> <strong>Pendidikan:</strong> S1
+                    <br/> <strong>Status Pernikahan:</strong> Menikah
+                    <br/> </div>
+            </div>
+            <ul>
+                <li>Total Penduduk: 1093</li>
+                <li>Berdasarkan Jenis Kelamin:</li>
+                <li>
+                    <ul>
+                        <li>Laki: 572</li>
+                        <li>Perempuan: 521</li>
+                    </ul>
+                </li>
+                <li>Mayoritas Pekerjaan Warga: Petani</li>
+                <li>Mata Pencaharian Utama: Petani Sayur</li>
+                <li>Status Pernikahan:
+                    <ul>
+                        <li>Menikah: 634</li>
+                        <li>Lajang: 459</li>
+                    </ul>
+                </li>
+                <li>Tingkat Pendidikan:
+                    <ul>
+                        <li>Play Group Swasta: -</li>
+                        <li>SD Negeri: -</li>
+                        <li>SD Swasta: -</li>
+                        <li>SMP: -</li>
+                        <li>SMA: -</li>
+                        <li>Lembaga Kursus: 3</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- Tambahkan bagian lain dengan pola yang sama untuk setiap lingkungan -->
+        <!-- LINGKUNGAN PEJARAKAN -->
+        <div class="statistics" id="pejarakan">
+            <h4 style="text-align: center;">LINGKUNGAN PEJARAKAN<br/>(Periode 2024)</h4>
+            <div class="profile"> <img alt="Kepala Lingkungan PENAN" src="images/kaling/Pejarakan.jpg" style="display: block; margin: 0 auto;" />
+                <div> <strong>KEPALA LINGKUNGAN</strong>
+                    <br/> <strong>Nama:</strong> Bapak M. Ramadhin, S. Sos
+                    <br/> <strong>Usia:</strong> 59 Tahun
+                    <br/> <strong>Pendidikan:</strong> S1
+                    <br/> <strong>Status Pernikahan:</strong> Menikah
+                    <br/> </div>
+            </div>
+            <ul>
+                <li>Total Penduduk: 2205</li>
+                <li>Berdasarkan Jenis Kelamin:</li>
+                <li>
+                    <ul>
+                        <li>Laki: 1220</li>
+                        <li>Perempuan: 985</li>
+                    </ul>
+                </li>
+                <li>Mayoritas Pekerjaan Warga: Jasa</li>
+                <li>Mata Pencaharian Utama: Wiraswasta</li>
+                <li>Status Pernikahan:
+                    <ul>
+                        <li>Menikah: 1279</li>
+                        <li>Lajang: 926</li>
+                    </ul>
+                </li>
+                <li>Tingkat Pendidikan:
+                    <ul>
+                        <li>Play Group Swasta: 2</li>
+                        <li>SD Negeri: 1</li>
+                        <li>SD Swasta: 2</li>
+                        <li>SMP: -</li>
+                        <li>SMA: -</li>
+                        <li>Lembaga Kursus: 2</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- LINGKUNGAN PENAN -->
+        <div class="statistics" id="penan">
+            <h4 style="text-align: center;">LINGKUNGAN PENAN<br/>(Periode 2024)</h4>
+            <div class="profile"> <img alt="Kepala Lingkungan PENAN" src="images/kaling/Penan.jpg" style="display: block; margin: 0 auto;" />
+                <div> <strong>KEPALA LINGKUNGAN</strong>
+                    <br/> <strong>Nama:</strong> Bapak Bahrun
+                    <br/> <strong>Usia:</strong> 67 Tahun
+                    <br/> <strong>Pendidikan:</strong> SMA
+                    <br/> <strong>Status Pernikahan:</strong> Menikah
+                    <br/> </div>
+            </div>
+            <ul>
+                <li>Total Penduduk: 1527</li>
+                <li>Berdasarkan Jenis Kelamin:</li>
+                <li>
+                    <ul>
+                        <li>Laki: 749</li>
+                        <li>Perempuan: 778</li>
+                    </ul>
+                </li>
+                <li>Mayoritas Pekerjaan Warga: Petani</li>
+                <li>Mata Pencaharian Utama: Petani Sayur</li>
+                <li>Status Pernikahan:
+                    <ul>
+                        <li>Menikah: 885</li>
+                        <li>Lajang: 642</li>
+                    </ul>
+                </li>
+                <li>Tingkat Pendidikan:
+                    <ul>
+                        <li>Play Group Swasta: 1</li>
+                        <li>SD Negeri: -</li>
+                        <li>SD Swasta: -</li>
+                        <li>SMP: -</li>
+                        <li>SMA: -</li>
+                        <li>Lembaga Kursus: 2</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <footer> © 2025 Kelurahan Pejarakan Karya Ampenan </footer>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll("header img");
+
+        function changeSlide() {
+            slides[currentSlide].classList.remove("active");
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add("active");
+        }
+        setInterval(changeSlide, 3000);
+
+        function showStatistics(id) {
+            const sections = document.querySelectorAll(".statistics");
+            sections.forEach(section => section.classList.remove("active"));
+            document.getElementById(id).classList.add("active");
+        }
+    </script>
+</body>
+
+</html>

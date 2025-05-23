@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lombok IT Academy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: url("images/digilib/background.jpg") no-repeat center center fixed;
+            /* Tambahkan gambar latar */
+            background-size: cover;
+            /* Gambar mencakup seluruh layar */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            /* Pastikan tinggi halaman mencakup viewport */
+        }
+        
+        main {
+            flex: 1;
+            /* Buat konten utama fleksibel agar footer tetap sticky */
+            padding: 20px;
+        }
+        /* Animasi Slide In */
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        /* Animasi Fade In */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        /* Popup Welcome */
+        
+        #welcomePopup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            animation: slideIn 0.7s ease forwards;
+            /* Efek Slide In */
+        }
+        
+        #welcomePopup .popup-content {
+            background: #fff;
+            padding: 5px;
+            text-align: center;
+            border-radius: 25px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.2s ease forwards;
+            /* Efek Fade In */
+        }
+        
+        #welcomePopup img {
+            width: 100px;
+            height: auto;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.3s forwards;
+            /* Fade In dengan Delay */
+        }
+        
+        #welcomePopup h2 {
+            margin-top: 10px;
+            color: #333;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.6s forwards;
+            /* Fade In dengan Delay */
+        }
+        /* Tombol di Popup Welcome */
+        
+        #welcomePopup button {
+            margin-top: 15px;
+            padding: 12px 25px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #fff;
+            background: #ff0000;
+            /* Warna merah */
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            cursor: pointer;
+            width: auto;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        /* Efek Border Animasi */
+        
+        #welcomePopup button::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            background: #00ff00;
+            border-radius: 10px;
+            z-index: -1;
+            opacity: 0;
+            transition: 0.5s ease-in-out;
+        }
+        /* Hover Effect */
+        
+        #welcomePopup button:hover {
+            color: #111;
+            background: #00ff00;
+            /* Warna hijau saat hover */
+            box-shadow: 0 0 5px #00ff00, 0 0 5px #00ff00;
+            transform: scale(1.1);
+        }
+        /* Efek Border Aktif */
+        
+        #welcomePopup button:hover::before {
+            opacity: 1;
+            filter: blur(5px);
+        }
+        /* Efek Klik */
+        
+        #welcomePopup button:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 5px #00ff00;
+        }
+        /* Header */
+        
+        header {
+            background: url("images/digilib/header.gif") no-repeat center center/cover;
+            height: 100px;
+            text-align: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            /* penting untuk overlay */
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 123, 255, 0.37);
+            /* biru muda transparan */
+            mix-blend-mode: screen;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        header * {
+            position: relative;
+            z-index: 2;
+        }
+        .header-logo {
+            position: absolute;
+            top: 5px; /* sedikit jarak dari atas */
+            left: 50%;
+            transform: translateX(-50%);
+            height: 25px;
+            max-width: 90%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(0, 200, 255, 0.8));
+            z-index: 2;
+        }
+        
+        /* Sticky Menu Buttons */
+        .menu-buttons {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 30, 60, 0.7));
+            backdrop-filter: blur(1px) brightness(1.5);
+            -webkit-backdrop-filter: blur(6px) brightness(1.2);
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+            padding: 10px 0;
+            /* Tetap sama sesuai permintaan */
+            z-index: 5;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 7px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        
+        /* Styling Tombol Futuristik */
+        .menu-buttons button {
+            padding: 0px 12px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: none;
+            color: #fff;  /* Warna Text Tombol Futuristik */
+            background: transparent;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+            cursor: pointer;
+            width: calc(14% - 10px);
+            /* dari 20% jadi 14% */
+            max-width: 120px;
+            /* dari 160px jadi 120px */
+            min-width: 80px;
+            /* dari 100px jadi 80px */
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 5px #ffffff;
+            z-index: 5;
+        }
+        
+        /* Efek Hover Border Animasi Kategori Buku */
+        .menu-buttons button::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            background: #fff;
+            border-radius: 10px;
+            z-index: -1;
+            opacity: 0;
+            transition: 0.5s ease-in-out;
+        }
+        /* Hover Effect */
+        
+        .menu-buttons button:hover {
+            color: #111;
+            background: #00eaff;
+            box-shadow: 0 0 5px #00eaff, 0 0 5px #00eaff;
+            transform: scale(1.1);
+        }
+        /* Efek Border Aktif */
+        
+        .menu-buttons button:hover::before {
+            opacity: 1;
+            filter: blur(5px);
+        }
+        
+        /* Efek Aktif (Tetap Menyala Setelah Diklik) */
+        
+        .menu-buttons button.active {
+            background: rgba(0, 255, 0, 0.85);  /* Warna Tombol Aktif Setelah Diklik */
+            transform: scale(1.1);
+            box-shadow: 0 0 5px #00eaff, 0 0 5px #00eaff;
+        }
+        /* Efek Klik */
+        
+        .menu-buttons button:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 5px #00eaff;
+        }
+        
+        .menu-buttons button:hover {
+            background: rgba(0, 0, 0, 0.7);
+        }
+        
+        @media (max-width: 768px) {
+            .menu-buttons button {
+                width: calc(25% - 10px);
+                /* 4 tombol per baris pada layar kecil */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .menu-buttons button {
+                width: calc(33.33% - 10px);
+                /* 3 tombol per baris pada layar sangat kecil */
+            }
+        }
+        
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .book {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.52);
+            border-radius: 5px;
+        }
+        /* Efek Zoom pada Gambar Buku */
+        
+        .book img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+            /* Animasi transisi */
+        }
+        
+        .book img:hover {
+            transform: scale(1.1);
+            /* Zoom-in saat hover */
+        }
+        /* Tombol Detail Lengkap */
+        
+        .book button {
+            padding: 5px 15px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: none;
+            color: #fff;
+            background: #007bff;
+            /* Warna biru */
+            border: 2px solid #00eaff;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 160px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 5px #007bff;
+        }
+        /* Efek Border Animasi */
+        
+        .book button::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            background: rgba(0, 123, 255, 0.8);
+            border-radius: 10px;
+            z-index: -1;
+            opacity: 0;
+            transition: 0.5s ease-in-out;
+        }
+        /* Hover Effect */
+        
+        .book button:hover {
+            color: #111;
+            background: #00ff00;
+            /* Warna hijau saat hover */
+            box-shadow: 0 0 5px #00ff00, 0 0 5px #00ff00;
+            transform: scale(1.1);
+        }
+        /* Efek Border Aktif */
+        
+        .book button:hover::before {
+            opacity: 1;
+            filter: blur(5px);
+        }
+        /* Efek Klik */
+        
+        .book button:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 5px #00ff00;
+        }
+        /* Book Details Popup */
+        
+        #bookDetails {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+        }
+        
+        #bookDetails .details-content {
+            background: rgba(255, 255, 255, 0.81);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        #bookDetails h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        #bookDetails p {
+            margin: 5px 0;
+            color: #555;
+        }
+        /* Tombol Detail Lengkap */
+        
+        #bookDetails button {
+            margin-top: 15px;
+            padding: 10px 25px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: none;
+            color: #ffffff;
+            background: #007bff;
+            /* Merah */
+            border: 2px solid #00eaff;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+        /* Efek Border Animasi */
+        
+        #bookDetails button::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            background: #00ff00;
+            border-radius: 10px;
+            z-index: -1;
+            opacity: 0;
+            transition: 0.5s ease-in-out;
+        }
+        /* Hover Effect */
+        
+        #bookDetails button:hover {
+            color: #111;
+            background: #00ff00;
+            /* Hijau saat hover */
+            box-shadow: 0 0 5px #00ff00, 0 0 5px #00ff00;
+            transform: scale(1.1);
+        }
+        /* Efek Border Aktif */
+        
+        #bookDetails button:hover::before {
+            opacity: 1;
+            filter: blur(5px);
+        }
+        /* Efek Klik */
+        
+        #bookDetails button:active {
+            transform: scale(0.95);
+            box-shadow: 0 0 5px #00ff00;
+        }
+        /* Footer */
+        
+        footer {
+            position: sticky;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 14px;
+            z-index: 10;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            footer {
+                font-size: 12px;
+                /* Responsif untuk layar kecil */
+                padding: 8px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Welcome Popup -->
+    <div id="welcomePopup">
+        <div class="popup-content" style="text-align: center;"> <img src="images/logo/ekarya.png" alt="Logo" />
+            <p style="font-size: 25px;"><b>ٱلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ ٱللَّٰهِ وَبَرَكَاتُهُ</b></p>
+            <p><b>SELAMAT DATANG</b></p>
+            <p> <b>"Portal ini hadir sebagai sarana inovasi dan kolaborasi bagi siswa/mahasiswa, guru/dosen,<br>dan masyarakat umum untuk mendukung Gerakan Menulis Buku Digital, baik ilmiah maupun non-ilmiah"<br/>
+            </b> </p>
+            <p><em><strong>"Silahkan Pilih Kategori Buku<br>Yang Mau Anda Baca!"</strong></em></p>
+            <button onclick="closeWelcomePopup()">PILIH KATEGORI</button>
+        </div>
+    </div>
+    <!-- Header -->
+    <header>
+         <img src="images/digilib/logo.png" alt="Logo" class="header-logo"> 
+    </header>
+    <!-- Main Content -->
+    <main>
+        <!-- Sticky Menu Buttons -->
+        <div class="menu-buttons">
+            <button onclick="showBooks('menu1')"> <b>Buku<br/>(Agama)</b> </button>
+            <button onclick="showBooks('menu2')"> <b>Buku<br/>(Ilmiah)</b> </button>
+            <button onclick="showBooks('menu3')"> <b>Buku<br/>(Non-Ilmiah)</b> </button>
+            <button onclick="showBooks('menu4')"> <b>Buku<br/>(Modul)</b> </button>
+            <button onclick="showBooks('menu5')"> <b>Buku HTML<br/>(How To ManuaL)</b> </button>
+            <button onclick="showBooks('menu6')"> <b>Buku<br/>(Biografi)</b> </button>
+            <button onclick="showBooks('menu7')"> <b>Buku Cerita<br/>(Dongeng)</b> </button>
+            <button onclick="showBooks('menu8')"> <b>Buku Komedi<br/>(Humor)</b> </button>
+        </div>
+        <!-- Book Grid -->
+        <div id="bookGrid" class="book-grid"></div>
+    </main>
+    <!-- Book Details Popup -->
+    <div id="bookDetails">
+        <div class="details-content">
+            <h3 id="bookTitle">Judul Buku</h3>
+            <p>Oleh: <span id="bookAuthor"></span></p>
+            <p>Halaman: <span id="bookPages"></span></p>
+            <p>Tahun (Bulan): <span id="bookYear"></span></p>
+            <p>Aggregator: <span id="bookPublisher"></span></p>
+            <button id="readBookButton">Baca Buku Ini</button>
+            <button onclick="closeBookDetails()">Tutup</button>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer> &copy; 2025 <strong>Digital Library</strong>
+        <br /> Licensed By <b>Developer Lombok IT</b>
+        <br /> Coded With <b>SQAI</b> (Squirrel Artificial Intelligence)
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const buttons = document.querySelectorAll(".menu-buttons button");
+            buttons.forEach(button => {
+                button.addEventListener("click", function () {
+                    // Hapus kelas 'active' dari semua tombol
+                    buttons.forEach(btn => btn.classList.remove("active"));
+                    // Tambahkan kelas 'active' ke tombol yang diklik
+                    this.classList.add("active");
+                });
+            });
+        });
+        const books = {
+            menu1: [
+                {
+                    title: "TABAYYUN: Pentingnya Klarifikasi dalam Islam"
+                    , author: "Dra. Hj. Thoyyibah Bagis, M.Pd.I"
+                    , pages: "45 Halaman"
+                    , year: "Oktober 2024"
+                    , publisher: "Lombok IT"
+                    , link: "https://drive.google.com/file/d/1M2EylhSuffYCNweUXHdjr2jCL4lHBQdK/view"
+                    , image: "covers/tabayyun.png"
+          }
+                , {
+                    title: "Fadhilah Beserta Fiqh Ramadhan dan Puasa"
+                    , author: "Ali Zainal Abidin Alaydrus"
+                    , pages: "137 Halaman"
+                    , year: "Januari 2023"
+                    , publisher: "Lombok IT"
+                    , link: "https://drive.google.com/file/d/1hQ4bJY2k9B1Bx5_brDWsunM0brgIueIE/view?usp=drive_link"
+                    , image: "covers/fiqh.png"
+          }
+        ]
+            , menu2: [
+                {
+                    title: "Speaking, Cooperative Learning, Audio-Lingual, and Self-Esteem"
+                    , author: "Abdul Kadir Bagis, M.Pd"
+                    , pages: "100 Halaman"
+                    , year: "Agustus 2023"
+                    , publisher: "Lombok IT"
+                    , link: "https://drive.google.com/file/d/1hqUjf-xNcPro7soEhXyVFrRv7_OqdcmZ/view?usp=drive_link"
+                    , image: "covers/speaking.png"
+          }
+                , {
+                    title: "Teknologi Pendidikan"
+                    , author: "Abdul Kadir Bagis, M.Pd"
+                    , pages: "171 Halaman"
+                    , year: "Mei 2024"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1pCjgKjs81d5erveIpnP7SVviojZ08MTw/view?usp=drive_link"
+                    , image: "covers/teknologi.png"
+          }
+                , {
+                    title: "Listening and Motivation"
+                    , author: "Aprianoto, M.Pd"
+                    , pages: "42 Halaman"
+                    , year: "Agustus 2023"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1nbQVJSs5d7P1tgUJQ7QkWyEakQXJpfZY/view?usp=drive_link"
+                    , image: "covers/listening.png"
+          }
+                , {
+                    title: "Improving Recount Text Reading Ability and English Learning Outcomes Through the Use of the Group Investigation Learning Model in Class XI Students of SMA Negeri 1 Jonggat"
+                    , author: "Rudiawan, M.Pd"
+                    , pages: "57 Halaman"
+                    , year: "Juni 2024"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1JvPjIMTNPOvQ-uam0opPVgcmFfttJeKm/view?usp=drive_link"
+                    , image: "covers/reading.png"
+          }
+                , {
+                    title: "Reading Intelligently"
+                    , author: "Dedi Sumarsono, M.Pd"
+                    , pages: "44 Halaman"
+                    , year: "Januari 2025"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1RLUgFTntKnBKImNHbXfdovo1G_ctUkHI/view?usp=drive_link"
+                    , image: "covers/intelligence.png"
+          }
+                , {
+                    title: "Kompetensi & Kepribadian Guru"
+                    , author: "Sudirman, M.Pd.I"
+                    , pages: "27 Halaman"
+                    , year: "Agustus 2023"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1jxDoqoKTSlSzjBkNeTbc6pRT6skdIFpm/view?usp=drive_link"
+                    , image: "covers/kompetensi.png"
+          }
+        ]
+            , menu3: [
+                {
+                    title: "Ayo Bermain Rangku Alu"
+                    , author: "Muhammad Irham, S.Pd.I"
+                    , pages: "25 Halaman"
+                    , year: "Januari 2025"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1oyl22qBExLKn12MzQ92fx5vgOwkA2YgL/view?usp=drive_link"
+                    , image: "covers/rangku.png"
+          }
+                , {
+                    title: "Mantra-Mantra Dari Pulau"
+                    , author: "Muhammad Irham, S.Pd.I"
+                    , pages: "73 Halaman"
+                    , year: "Januari 2025"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1KAdrvfHV_jIqSIBdmV_LE-_KrpTwwrsq/view?usp=drive_link"
+                    , image: "covers/mantra.png"
+          }
+                , {
+                    title: "Membangun Dunia Literasi Dengan Cinta"
+                    , author: "Muhammad Irham, S.Pd.I"
+                    , pages: "90 Halaman"
+                    , year: "Mei 2024"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1mNY-vLBYEiUlpPKZGgl2ClsdVL9nleCr/view?usp=drive_link"
+                    , image: "covers/literasi.png"
+          }
+                , {
+                    title: "Kumpulan Puisi Dikala Sunyi Aku Menulis Puisi"
+                    , author: "Muhammad Irham, S.Pd.I"
+                    , pages: "60 Halaman"
+                    , year: "Februari 2023"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1wmgR8fbJioIiG9t3j6fBvhbiqHTin21c/view?usp=drive_link"
+                    , image: "covers/puisi.png"
+          }
+                , {
+                    title: "The Disappearance of A Hiker"
+                    , author: "Aulia, Hidayatus, Lidia, Patimah, Reni"
+                    , pages: "35 Halaman"
+                    , year: "April 2025"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1N5sbx54yJwjeGPJSSd7UQcGIYXJxJsxA/view?usp=drive_link"
+                    , image: "covers/hiker.png"
+          }
+                , {
+                    title: "Motherless World"
+                    , author: "Iswatul, Putri, Ririn, Risma, Zunuraen"
+                    , pages: "55 Halaman"
+                    , year: "April 2025"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1vkWtjdsg6UnEf6koLumL3NaPZzhb9PME/view?usp=drive_link"
+                    , image: "covers/mother.png"
+          }
+                , {
+                    title: "A Journey of Five Souls"
+                    , author: "Dewi, Dhia, Frendy, Ita, Renita"
+                    , pages: "43 Halaman"
+                    , year: "April 2025"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/13aWRA3pX14q7ry5OYcrGqEZRSmRvlowE/view?usp=drive_link"
+                    , image: "covers/souls.png"
+          }
+                , {
+                    title: "A Sinner's Last Step"
+                    , author: "Asqina, Dela, Ela, Muhammad"
+                    , pages: "59 Halaman"
+                    , year: "April 2025"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1ABczdRc8KCPZrxE9UAa3B5SjXSBm_3-t/view?usp=drive_link"
+                    , image: "covers/step.png"
+          }
+                , {
+                    title: "Suara Yang Dibungkam"
+                    , author: "Hasyim, Maulida, Safira, Umam"
+                    , pages: "30 Halaman"
+                    , year: "April 2025"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1r6oPixbxO_24iOO68ttXYZYB3UAPV33U/view?usp=drive_link"
+                    , image: "covers/suara.png"
+          }
+        ]
+            , menu4: [
+                {
+                    title: "Agama & Pancasila Dalam Teknologi"
+                    , author: "Abdul Kadir Bagis, M.Pd"
+                    , pages: "61 Halaman"
+                    , year: "Januari 2025"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1AoE-LmqD0kVDgEycSmCPXJFSghf0bUaH/view?usp=drive_link"
+                    , image: "covers/pancasila.png"
+          }
+                , {
+                    title: "English in Media Discourse"
+                    , author: "Abdul Kadir Bagis, M.Pd"
+                    , pages: "67 Halaman"
+                    , year: "April 2024"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1TVNt_iTzCmRILWFfOqBNh2cY4z9YSlzC/view?usp=drive_link"
+                    , image: "covers/discourse.png"
+          }
+                , {
+                    title: "Linguistik Modern"
+                    , author: "Dr. Yek Amin Azis, M.Pd"
+                    , pages: "37 Halaman"
+                    , year: "Juni 2024"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/14oMlw5l4vef_BFJ2yWP1_06o9dLS10e2/view?usp=drive_link"
+                    , image: "covers/linguistik.png"
+          }
+        ]
+            , menu5: [
+                {
+                    title: "NASI KUNING: The Golden Heritage of Indonesian Culinary – History and Traditions Behind a Timeless Dish"
+                    , author: "Tri Setianingsih, SS., M.Pd"
+                    , pages: "27 Halaman"
+                    , year: "Oktober 2024"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/18YVi4E6tqGPWhtLFyhIZyw1d3oogOFOk/view?usp=drive_link"
+                    , image: "covers/nasi.png"
+          }
+                , {
+                    title: "Coming Soon"
+                    , author: "Coming Soon"
+                    , pages: "Coming Soon"
+                    , year: "Coming Soon"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1O6Okr2LQKm_Ju8Db_emf0YNtqwSN1Xvy/view?usp=drive_link"
+                    , image: "covers/soon.png"
+          }
+        ]
+            , menu6: [
+                {
+                    title: "Sang Matahari.  Syair Biografi Maulana Syeh"
+                    , author: "Muhammad Sapwan"
+                    , pages: "50 Halaman"
+                    , year: "Agustus 2023"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1Xr8PB-WWHirD2aLA6QnxdEAJKJbPMkCP/view?usp=drive_link'"
+                    , image: "covers/matahari.png"
+          }
+                , {
+                    title: "Coming Soon"
+                    , author: "Coming Soon"
+                    , pages: "Coming Soon"
+                    , year: "Coming Soon"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1O6Okr2LQKm_Ju8Db_emf0YNtqwSN1Xvy/view?usp=drive_link"
+                    , image: "covers/soon.png"
+          }
+        ]
+            , menu7: [
+                {
+                    title: "Mengenal Tradisi Bau Nyale"
+                    , author: "Muhammad Irham, S.Pd.I"
+                    , pages: "32 Halaman"
+                    , year: "Januari 2025"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1XT0XAjtb9QdPp9PZI0_cf77JVj40LEyT/view?usp=drive_link'"
+                    , image: "covers/nyale.png"
+          }
+                , {
+                    title: "Coming Soon"
+                    , author: "Coming Soon"
+                    , pages: "Coming Soon"
+                    , year: "Coming Soon"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1O6Okr2LQKm_Ju8Db_emf0YNtqwSN1Xvy/view?usp=drive_link"
+                    , image: "covers/soon.png"
+          }
+        ]
+            , menu8: [
+                {
+                    title: "Coming Soon"
+                    , author: "Coming Soon"
+                    , pages: "Coming Soon"
+                    , year: "Coming Soon"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1O6Okr2LQKm_Ju8Db_emf0YNtqwSN1Xvy/view?usp=drive_link"
+                    , image: "covers/soon.png"
+          }
+                , {
+                    title: "Coming Soon"
+                    , author: "Coming Soon"
+                    , pages: "Coming Soon"
+                    , year: "Coming Soon"
+                    , publisher: "Developer Lombok IT"
+                    , link: "https://drive.google.com/file/d/1O6Okr2LQKm_Ju8Db_emf0YNtqwSN1Xvy/view?usp=drive_link"
+                    , image: "covers/soon.png"
+          }
+        ]
+        };
+
+        function closeWelcomePopup() {
+            document.getElementById("welcomePopup").style.display = "none";
+            document.querySelector("main").style.display = "block";
+        }
+
+        function showBooks(menu) {
+            const grid = document.getElementById("bookGrid");
+            grid.innerHTML = "";
+            if (books[menu]) {
+                books[menu].forEach((book) => {
+                    const bookDiv = document.createElement("div");
+                    bookDiv.className = "book";
+                    bookDiv.innerHTML = `
+          <img src="${book.image}" alt="${book.title}">
+          <button onclick="openBookDetails('${menu}', \`${encodeURIComponent(book.title)}\`)">Detail Lengkap</button>
+        `;
+                    grid.appendChild(bookDiv);
+                });
+            }
+        }
+
+        function openBookDetails(menu, encodedTitle) {
+            const decodedTitle = decodeURIComponent(encodedTitle);
+            const book = books[menu].find((b) => b.title === decodedTitle);
+            if (book) {
+                document.getElementById("bookTitle").innerText = book.title;
+                document.getElementById("bookAuthor").innerText = book.author;
+                document.getElementById("bookPages").innerText = book.pages;
+                document.getElementById("bookYear").innerText = book.year;
+                document.getElementById("bookPublisher").innerText = book.publisher;
+                document.getElementById("readBookButton").onclick = () => window.open(book.link, "_blank");
+                document.getElementById("bookDetails").style.display = "flex";
+            }
+        }
+
+        function closeBookDetails() {
+            document.getElementById("bookDetails").style.display = "none";
+        }
+    </script>
+</body>
+
+</html>

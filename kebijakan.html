@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kebijakan Privasi - E-KARYA (Smart City)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      background: linear-gradient(to bottom right, #003b88, #005f99);
+      overflow-x: hidden;
+    }
+
+    h1 {
+      color: #fff;
+      text-align: center;
+      margin-top: 16px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      color: #fff;
+      text-align: left;
+      margin-top: 16px;
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      color: #fff;
+      text-align: left;
+      margin-top: 14px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    .logo-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .logo {
+      width: 150px;
+      opacity: 0;
+      transform: translateY(-50px);
+      animation: slideIn 1.2s forwards;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 30px 25px;
+      max-width: 900px;
+      margin: 20px auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+    }
+
+    .content {
+      text-align: justify;
+    }
+
+    .content > * {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    /* Delay animation sampai ke elemen ke-30 */
+    .content > *:nth-child(1) { animation-delay: 0.3s; }
+    .content > *:nth-child(2) { animation-delay: 0.6s; }
+    .content > *:nth-child(3) { animation-delay: 0.9s; }
+    .content > *:nth-child(4) { animation-delay: 1.2s; }
+    .content > *:nth-child(5) { animation-delay: 1.5s; }
+    .content > *:nth-child(6) { animation-delay: 1.8s; }
+    .content > *:nth-child(7) { animation-delay: 2.1s; }
+    .content > *:nth-child(8) { animation-delay: 2.4s; }
+    .content > *:nth-child(9) { animation-delay: 2.7s; }
+    .content > *:nth-child(10) { animation-delay: 3.0s; }
+    .content > *:nth-child(11) { animation-delay: 3.3s; }
+    .content > *:nth-child(12) { animation-delay: 3.6s; }
+    .content > *:nth-child(13) { animation-delay: 3.9s; }
+    .content > *:nth-child(14) { animation-delay: 4.2s; }
+    .content > *:nth-child(15) { animation-delay: 4.5s; }
+    .content > *:nth-child(16) { animation-delay: 4.8s; }
+    .content > *:nth-child(17) { animation-delay: 5.1s; }
+    .content > *:nth-child(18) { animation-delay: 5.4s; }
+    .content > *:nth-child(19) { animation-delay: 5.7s; }
+    .content > *:nth-child(20) { animation-delay: 6s; }
+    .content > *:nth-child(21) { animation-delay: 6.3s; }
+    .content > *:nth-child(22) { animation-delay: 6.6s; }
+    .content > *:nth-child(23) { animation-delay: 6.9s; }
+    .content > *:nth-child(24) { animation-delay: 7.2s; }
+    .content > *:nth-child(25) { animation-delay: 7.5s; }
+    .content > *:nth-child(26) { animation-delay: 7.8s; }
+    .content > *:nth-child(27) { animation-delay: 8.1s; }
+    .content > *:nth-child(28) { animation-delay: 8.4s; }
+    .content > *:nth-child(29) { animation-delay: 8.7s; }
+    .content > *:nth-child(30) { animation-delay: 9.0s; }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    ul {
+      margin-left: 20px;
+      padding-left: 15px;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 20px;
+      }
+    }
+    
+    section {
+  margin-bottom: 20px;
+}
+
+section h2 {
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 12px 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+
+  /* ⬇️ Tambahkan di sini untuk mengatur ukuran font */
+  font-size: 1.1rem; /* atau 16px, 18px, dsb */
+}
+
+
+section h2:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.section-content {
+  background: rgba(255, 255, 255, 0.07);
+  padding: 15px 20px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  display: none; /* Disembunyikan default */
+}
+
+.section-content.show {
+  display: block;
+}
+    
+#toggleBtn {
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <img src="images/logo/ekarya.png" alt="E-KARYA Logo" class="logo" id="logo" />
+  </div>
+
+ <div class="card">
+  <div class="content">
+
+    <div style="text-align: center; margin-bottom: 20px;">
+      <button onclick="toggleAllSections()" id="toggleBtn" style="padding: 10px 20px; font-weight: 600; border-radius: 10px; background-color: rgba(255,255,255,0.15); color: white; border: none; cursor: pointer;">
+        TAMPILKAN SEMUA KEBIJAKAN
+      </button>
+    </div>
+
+   <section>
+  <h2 onclick="toggleSection(this)">1. Kebijakan Privasi E-KARYA <span class="arrow">⬇️</span></h2>
+  <div class="section-content">
+    <p><strong>E-KARYA (Smart City)</strong> adalah aplikasi resmi yang dikembangkan oleh <strong>Kelurahan Pejarakan Karya Ampenan</strong> bekerja sama dengan <strong>Developer Lombok IT</strong>. Aplikasi ini dirancang untuk mempermudah pelayanan administrasi masyarakat serta mendorong partisipasi warga dalam pengembangan lingkungan secara digital dan efisien.</p>
+
+    <p>Melalui <strong>E-KARYA</strong>, kami berkomitmen untuk menjaga kepercayaan Anda sebagai pengguna dengan memastikan bahwa data pribadi dan aktivitas digital Anda dilindungi dengan baik. Kebijakan privasi ini menjelaskan secara transparan bagaimana aplikasi ini mengelola data, memastikan keamanan, serta membatasi penyalahgunaan informasi pribadi dalam bentuk apapun.</p>
+
+    <p>Kebijakan privasi ini juga disusun mengikuti pedoman dan regulasi terkait perlindungan data pribadi, serta menjadi bagian dari komitmen kami untuk menciptakan ekosistem digital yang aman, inklusif, dan bertanggung jawab.</p>
+
+    <p>Dengan menggunakan aplikasi ini, Anda menyetujui dan memahami bahwa setiap data yang dikumpulkan (jika ada) akan digunakan sesuai dengan kebijakan ini, hanya untuk tujuan yang sah dan tidak disalahgunakan di luar konteks layanan <strong>E-KARYA</strong>.</p>
+  </div>
+</section>
+
+
+   <section>
+  <h2 onclick="toggleSection(this)">2. Pengumpulan dan Penggunaan Data <span class="arrow">⬇️</span></h2>
+  <div class="section-content">
+    <p>Kami menghargai dan mengutamakan privasi Anda. Oleh karena itu, semua kebijakan mengenai pengumpulan dan penggunaan data dalam aplikasi E-KARYA ditetapkan secara transparan demi menjaga kepercayaan pengguna.</p>
+
+    <h3>1. Tidak Ada Pengumpulan Data</h3>
+    <p>Aplikasi <b>E-KARYA</b> tidak mengumpulkan data pribadi pengguna tanpa persetujuan. Seluruh aktivitas dalam aplikasi dapat dilakukan tanpa perlu membuat akun atau memberikan informasi pribadi, kecuali dalam situasi yang sangat dibutuhkan seperti pemesanan produk.</p>
+
+    <h3>2. Data untuk Pemesanan Produk</h3>
+    <p>Jika Anda melakukan pemesanan produk melalui aplikasi, informasi yang Anda berikan seperti nama dan alamat hanya digunakan untuk keperluan pengiriman barang. Data ini tidak disimpan dalam server secara permanen dan tidak digunakan untuk tujuan lain.</p>
+
+    <h3>3. Tidak Ada Permintaan Data Tambahan</h3>
+    <p>Kami tidak meminta informasi pribadi tambahan seperti nomor KTP, tanggal lahir, atau data sensitif lainnya. Fokus kami adalah memberikan layanan yang cepat dan aman tanpa membebani pengguna dengan permintaan data yang tidak relevan.</p>
+
+    <h3>4. Fitur Media Sosial</h3>
+    <p>Aplikasi menyediakan tautan ke layanan pihak ketiga seperti <strong>WhatsApp, Facebook, Instagram,</strong> dan <strong>YouTube</strong> untuk tujuan komunikasi dan informasi. Kami tidak mengakses atau menyimpan data pribadi dari akun media sosial Anda.</p>
+  </div>
+</section>
+
+<section>
+  <h2 onclick="toggleSection(this)">3. Penggunaan Resmi <span class="arrow">⬇️</span></h2>
+  <div class="section-content">
+    <p>Aplikasi E-KARYA merupakan media resmi milik Kelurahan Pejarakan Karya yang digunakan untuk mendukung pelayanan publik, komunikasi kelurahan, serta pemberdayaan masyarakat dan UMKM lokal.</p>
+    <p>Penggunaan aplikasi ini mencakup berbagai layanan administratif dan informasi sebagai berikut:</p>
+    <ul>
+      <li>Pengajuan dokumen dan permintaan surat pengantar secara digital.</li>
+      <li>Distribusi informasi mengenai kegiatan, program kerja, dan pengumuman resmi dari kelurahan.</li>
+      <li>Fitur e-commerce lokal untuk memfasilitasi pemesanan dan promosi produk warga.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2 onclick="toggleSection(this)">4. Tidak Ada Iklan <span class="arrow">⬇️</span></h2>
+  <div class="section-content">
+    <p>E-KARYA dikembangkan sebagai platform bebas iklan untuk memastikan kenyamanan pengguna dalam mengakses layanan kelurahan. Kami berkomitmen untuk tidak menampilkan iklan dari pihak ketiga yang dapat mengganggu pengalaman pengguna atau mengalihkan fokus dari fungsi utama aplikasi.</p>
+  </div>
+</section>
+
+<section>
+  <h2 onclick="toggleSection(this)">5. Layanan Gratis <span class="arrow">⬇️</span></h2>
+  <div class="section-content">
+    <p>Seluruh fitur yang tersedia di aplikasi E-KARYA dapat digunakan tanpa biaya. Kami tidak membebankan biaya instalasi, langganan, atau transaksi kepada pengguna. Aplikasi ini dikembangkan sebagai bentuk pelayanan publik yang inklusif dan efisien.</p>
+  </div>
+</section>
+
+<section>
+  <h2 onclick="toggleSection(this)">6. Layanan Pihak Ketiga <span class="arrow">⬇️</span></h2>
+  <div class="section-content">
+    <p>Beberapa fitur dalam aplikasi E-KARYA seperti tautan ke media sosial dan layanan komunikasi menggunakan platform pihak ketiga. Harap diperhatikan bahwa layanan tersebut tunduk pada kebijakan privasi masing-masing pihak seperti WhatsApp Inc., Meta Platforms Inc., dan YouTube LLC.</p>
+    <p>Kami tidak bertanggung jawab atas kebijakan atau praktik dari pihak ketiga tersebut, dan menyarankan pengguna untuk membaca kebijakan privasi mereka sebelum menggunakan fitur yang terkait.</p>
+  </div>
+</section>
+
+<section>
+  <h2 onclick="toggleSection(this)">7. Privasi Anak-anak <span class="arrow">⬇️</span></h2>
+  <div class="section-content">
+    <p>Aplikasi E-KARYA dapat diakses oleh semua kalangan, termasuk anak-anak. Namun, kami menyarankan agar penggunaan oleh anak-anak dilakukan di bawah pengawasan orang tua atau wali untuk memastikan pemanfaatan fitur aplikasi secara aman dan sesuai tujuan.</p>
+  </div>
+</section>
+
+<section>
+  <h2 onclick="toggleSection(this)">8. Keamanan <span class="arrow">⬇️</span></h2>
+  <div class="section-content">
+    <p>Meskipun E-KARYA tidak menyimpan data pribadi pengguna, kami tetap menerapkan prinsip keamanan digital. Aplikasi ini dirancang untuk meminimalisir risiko penyalahgunaan dan telah diuji agar aman dari celah keamanan umum.</p>
+  </div>
+</section>
+
+<section>
+  <h2 onclick="toggleSection(this)">9. Perubahan Pada Kebijakan Privasi Ini <span class="arrow">⬇️</span></h2>
+  <div class="section-content">
+    <p>Kami berhak memperbarui kebijakan privasi ini sewaktu-waktu untuk menyesuaikan dengan perkembangan teknologi atau peraturan yang berlaku. Perubahan akan diumumkan dalam aplikasi dan mulai berlaku segera setelah dipublikasikan.</p>
+    <p>Pengguna disarankan untuk secara rutin membaca kebijakan ini agar tetap mendapatkan informasi terbaru mengenai perlindungan data dan penggunaan aplikasi.</p>
+  </div>
+</section>
+
+<section>
+  <h2 onclick="toggleSection(this)">10. Hubungi Kami <span class="arrow">⬇️</span></h2>
+  <div class="section-content">
+    <p>Jika Anda memiliki pertanyaan, masukan, atau permintaan informasi lebih lanjut, silakan hubungi kami melalui kontak resmi berikut:</p>
+    <p><strong>Kelurahan Pejarakan Karya Ampenan</strong><br>
+      <b>Alamat:</b> Jl. Gotong Royong No. 258, Moncok Karya, Ampenan, Nusa Tenggara Barat<br>
+      <b>Email:</b> pejarakarankaryaampenan@gmail.com</p>
+  </div>
+</section>
+
+
+  </div>
+</div>
+
+ <script>
+  // Hide all sections at first load
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.section-content').forEach(el => el.classList.remove('show'));
+    document.getElementById('toggleBtn').textContent = "TAMPILKAN SEMUA KEBIJAKAN";
+  });
+
+  function toggleSection(header) {
+    const content = header.nextElementSibling;
+    content.classList.toggle('show');
+  }
+
+  function toggleAllSections() {
+    const sections = document.querySelectorAll('.section-content');
+    const toggleBtn = document.getElementById('toggleBtn');
+    const anyVisible = Array.from(sections).some(s => s.classList.contains('show'));
+
+    sections.forEach(section => {
+      section.classList.toggle('show', !anyVisible);
+    });
+
+    toggleBtn.textContent = anyVisible ? "TAMPILKAN SEMUA KEBIJAKAN" : "SEMBUNYIKAN SEMUA KEBIJAKAN";
+  }
+</script>
+
+
+</body>
+</html>

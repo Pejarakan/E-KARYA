@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profil Kelurahan Pejarakan Karya</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #001f4d, #0056b3);
+      color: #fff;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+    html {
+  height: 100%;
+  background: linear-gradient(to bottom right, #001f4d, #0056b3);
+}
+
+
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      background: linear-gradient(to bottom, rgba(0, 31, 77, 0.9), rgba(0, 86, 179, 0.9));
+      z-index: 1000;
+      text-align: center;
+      padding: 10px 0 5px;
+      backdrop-filter: blur(6px);
+    }
+
+    .logo-fade {
+      width: 100px;
+      margin: 0 auto 10px;
+      animation: fadeIn 2s ease, pulse 2.5s infinite;
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 22px;
+      animation: fadeIn 2s ease 1.2s both;
+    }
+
+    .note {
+      margin: 4px 0 12px;
+      font-size: 14px;
+      color: #ddd;
+      animation: fadeIn 2s ease 1.5s both;
+    }
+
+    .collapsible {
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      background: linear-gradient(
+        120deg,
+        #007bff 0%,
+        #007bff 30%,
+        #ddd 50%,
+        #007bff 70%,
+        #007bff 100%
+      );
+      background-size: 200% 100%;
+      color: white;
+      cursor: pointer;
+      padding: 14px 18px;
+      width: 90%;
+      max-width: 900px;
+      margin: 12px auto;
+      border: none;
+      text-align: left;
+      font-size: 15px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, opacity 0.6s ease, transform 0.6s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      animation: shimmer 2.5s infinite linear;
+    }
+
+    .collapsible.visible {
+      display: block;
+    }
+
+    .collapsible.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -150% 0; }
+      100% { background-position: 150% 0; }
+    }
+
+    .content {
+      max-width: 900px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(8px);
+      padding: 18px;
+      display: none;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .content p {
+      font-size: 14.5px;
+      text-align: justify;
+      color: #f0f0f0;
+      margin: 4px 0;
+      letter-spacing: 0.2px;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .content img {
+      width: 100%;
+      max-width: 160px;
+      height: auto;
+      margin: 8px auto;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    iframe {
+      border-radius: 12px;
+      width: 100%;
+      height: 350px;
+      border: none;
+      margin: 10px 0;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .collapsible {
+        font-size: 14px;
+        padding: 12px;
+      }
+
+      iframe {
+        height: 260px;
+      }
+
+      .content img {
+        max-width: 100px;
+      }
+    }
+    
+   .zoomable {
+  transition: transform 0.3s ease;
+  cursor: zoom-in;
+}
+
+.zoomable.zoomed {
+  transform: scale(2) !important;
+  cursor: zoom-out;
+  z-index: 999;
+  position: relative;
+}
+
+@media (max-width: 600px) {
+  .zoomable.zoomed {
+    transform: scale(2.5);
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <div class="sticky-header">
+    <img src="images/logo/ekarya.png" alt="Logo Pejarakan Karya" class="logo-fade">
+    <h2>PROFIL KELURAHAN</h2>
+    <p class="note"><b>Tekan tombol di bawah untuk melihat atau menutup informasi</b></p>
+  </div>
+
+  <!-- Tombol collapsible -->
+  <button class="collapsible">Sejarah Singkat Berdirinya Pemusungan/Desa/Kelurahan</button>
+  <div class="content">
+    <img src="images/logo/ekarya.png" alt="Logo Pejarakan">
+    <p style="text-align:justify;">Berdasarkan Peraturan Pemerintah No. 21 tahun 1978 tentang Pembentukan Kota Administratif Mataram yang  diresmikan oleh Menteri Dalam Negeri pada tanggal 29 Agustus 1978, maka seluruh Desa yang ada di Kota Administratif Mataram berubah status menjadi Kelurahan.</p><br>
+        <p style="text-align:justify;">Kelurahan   Pejarakan   Karya   berdiri   Mei   2007   telah   terjadi   6   kali pergantian Pimpinan. Adapun nama-nama lurah yang bertugas di Kelurahan Pejarakan Karya adalah sebagai berikut :</p><br>
+     <p style="text-align:justify;"><b>Nama-Nama Lurah Sejak 2007-Sekarang (2025)</b></p>
+    <p style="text-align:justify;">1. Drs. H. Suparto. Sejak tahun 2007-2010</p>
+<img src="images/lurah/Suparto.jpg" alt="what image shows" height="300" width="250">
+<p style="text-align:justify;">2. ALWI, S.IP	tahun 2010-2016</p>
+<img src="images/lurah/Alwi.jpg" alt="what image shows" height="300" width="250">
+<p style="text-align:justify;">3. R. ROOS NUGROHO, SE. Sejak tahun 2016-2019</p>
+<img src="images/lurah/Nugroho.jpg" alt="what image shows" height="300" width="250">
+<p style="text-align:justify;">4. BURDI, S. Sos	tahun 2019-2021</p>
+<img src="images/lurah/Burdi.jpg" alt="what image shows" height="300" width="250">
+<p style="text-align:justify;">5. YUDHI ARIADI, S. Adm. Sejak tahun 2021-2022</p>
+<img src="images/lurah/Yudhi.jpg" alt="what image shows" height="300" width="250">
+<p style="text-align:justify;">6. MULHAKIM, SH. Sejak tahun 2023-Sekarang</p>
+<img src="animation/Lurah.gif" alt="what image shows" height="300" width="250"><br>
+    <p style="text-align:justify;">Kelurahan Pejarakan Karya membawahi 4 (empat) Lingkungan dan 26 RT. Masing-masing lingkungan dikepalai oleh:</p>
+	<p style="text-align:justify;"><b>Nama-Nama KALING Sekarang (2025)</b></p>
+    <p style="text-align:justify;">1. Sapri, S. Sos	- Kaling Moncok Karya</p>
+<img src="images/kaling/Moncok.jpg" alt="what image shows" height="300" width="250">
+<p style="text-align:justify;">2. Subki, S. Adm - Kaling Moncok Telaga Mas</p>
+<img src="images/kaling/Montela.jpg" alt="what image shows" height="300" width="250">
+<p style="text-align:justify;">3. M. Ramadhin, S. Sos - Kaling Pejarakan</p>
+<img src="images/kaling/Pejarakan.jpg" alt="what image shows" height="300" width="250">
+<p style="text-align:justify;">4. Bahrun - Kaling Penan</p>
+<img src="images/kaling/Penan.jpg" alt="what image shows" height="300" width="250">
+  </div>
+
+  <button class="collapsible">Letak Geografis</button>
+  <div class="content">
+    <iframe title="Peta Kelurahan Pejarakan Karya" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7890.527282160874!2d116.09188790866168!3d-8.570629306682092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcdc08c4ecc7481%3A0x6a7fd53dd978d834!2sPejarakan%20Karya%2C%20Ampenan%2C%20Mataram%20City%2C%20West%20Nusa%20Tenggara!5e0!3m2!1sen!2sid!4v1719558245323!5m2!1sen!2sid"></iframe>
+     <p style="text-align:justify;">Kelurahan  Pejarakan  Karya  merupakan  salah  satu  kelurahan  dari  10 kelurahan yang berada di Kecamatan Ampenan dengan luas wilayah  + 73,942 Ha dengan batas-batas sebagai berikut:</p>
+<p style="text-align:justify;">1. Sebelah Utara: Kel. Ampenan Utara</p>
+<p style="text-align:justify;">2. Sebelah Timur: Kelurahan Kecamatan Selaparang</p>
+<p style="text-align:justify;">3. Sebelah Selatan: Kecamatan Selaparang</p>
+<p style="text-align:justify;">4. Sebelah Barat: Kelurahan Kebun Sari</p><br>
+<p style="text-align:justify;">Luas wilayah seperti di atas telah diatur dalam suatu tata ruang yang terdiri dari:
+<p style="text-align:justify;">1. Pemukiman:13,40 Ha</p>
+<p style="text-align:justify;">2. Pertokoan:1,10 Ha</p>
+<p style="text-align:justify;">3. Persawahan:42,65 Ha</p>
+<p style="text-align:justify;">4. Fasilitas Umum dan Jalan:11,10 Ha</p>
+<p style="text-align:justify;">5. Lain-Lainnya:5,69 Ha</p><br>
+<p style="text-align:justify;">Kelurahan Pejarakan Karya secara administratif sejak tahun 2007 terdiri dari 4 lingkungan dan 26 RT yaitu:</p>
+<p style="text-align:justify;">1. Lingkungan Penan:5 RT</p>
+<p style="text-align:justify;">2. Lingkungan Pejarakan:8 RT</p>
+<p style="text-align:justify;">3. Lingkungan Moncok Karya:8 RT</p>
+<p style="text-align:justify;">4. Lingkungan Moncok Telaga Mas:5 RT</p>
+  </div>
+
+  <button type="button" class="collapsible"><b>Perencanaan Strategis Kelurahan</b></button>
+  <div class="content">
+    <div class="img-center"><img src="images/logo/ekarya.png" alt="Logo Strategis" height="300" width="250"></div>
+    <p style="text-align:justify;"><b>VISI:</b> Terwujudnya  Pelayanan  Prima  Menuju  Masyarakat  Pejarakan  Karya  yang Harmoni, Ramah, Unggul, Mandiri <b>(HARUM)</b></p>
+    <p style="text-align:justify;"><b>MISI:</b></p>
+    <p style="text-align:justify;">1. Meningkatkan kompetensi masyarakat melalui pendidikan.</p>
+    <p style="text-align:justify;">2. Mendorong kemajuan ekonomi, sosial dan budaya.</p>
+    <p style="text-align:justify;">3. Meningkatkan kualitas aparatur kelurahan.</p>
+    <p style="text-align:justify;">4. Meningkatkan partisipasi warga dalam pembangunan.</p>
+    <p style="text-align:justify;">5. Mewujudkan transparansi dan akuntabilitas pembangunan.</p>
+  </div>
+
+  <button type="button" class="collapsible"><b>Pelaksanaan Program dan Hasil Pembangunan</b></button>
+  <div class="content">
+    <div class="img-center"><img src="images/logo/ekarya.png" alt="Program" height="300" width="250"></div>
+    <p style="text-align:justify;"><b>Pendidikan Masyarakat</b></p>
+    <p style="text-align:justify;">Program pendidikan diarahkan kepada penuntasan wajib belajar...</p>
+    <p style="text-align:justify;"><b>Keberadaan bangunan sekolah:</b></p>
+    <p style="text-align:justify;">1. RA Bani Sholeh - Penan</p>
+    <p style="text-align:justify;">2. TK Ar-Royan - Penan</p>
+    <p style="text-align:justify;">3. TK Tanwirul Qulub - Pejarakan</p>
+    <p style="text-align:justify;">4. TK Al Wahida - Moncok Karya</p>
+    <p style="text-align:justify;">5. TK IT Ar Rahman - Moncok Karya</p>
+    <p style="text-align:justify;">6. SDN 16 Ampenan - Moncok Karya</p>
+    <p style="text-align:justify;">7. SDN 24 Ampenan - Pejarakan</p>
+  </div>
+
+  <button type="button" class="collapsible"><b>Bagan Struktur Kelurahan</b></button>
+<div class="content">
+  <div class="img-center">
+<img src="images/foto/Struktur.jpg" alt="Struktur Organisasi" class="zoomable" style="width: 100%; max-width: 500px;" height="auto">
+  </div>
+</div>
+
+
+  <script>
+   // Munculkan tombol satu per satu setelah header selesai animasi
+    window.addEventListener("load", () => {
+      const buttons = document.querySelectorAll(".collapsible");
+      let delay = 2000; // Menunggu logo dan teks selesai
+
+      buttons.forEach((button, i) => {
+        setTimeout(() => {
+          button.classList.add("visible", "fade-in");
+        }, delay + i * 350); // jeda antara tombol
+      });
+    });
+
+    // Event klik buka/tutup collapsible
+    const coll = document.querySelectorAll(".collapsible");
+    coll.forEach(button => {
+      button.addEventListener("click", () => {
+        button.classList.toggle("active");
+        const content = button.nextElementSibling;
+        content.style.display = content.style.display === "block" ? "none" : "block";
+      });
+    });
+    document.querySelectorAll('.zoomable').forEach(img => {
+    img.addEventListener('click', function () {
+      this.classList.toggle('zoomed');
+    });
+  });
+    document.querySelectorAll('.zoomable').forEach(img => {
+  img.addEventListener('click', function () {
+    this.classList.toggle('zoomed');
+  });
+});
+
+  </script>
+</body>
+</html>

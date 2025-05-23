@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kolom Pelayanan Masyarakat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: linear-gradient(to bottom right, #001f4d, #0056b3);
+      color: white;
+    }
+
+    .header {
+      text-align: center;
+      margin: 30px 0 10px;
+      animation: fadeDown 1s ease-out forwards;
+      opacity: 0;
+      margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+    }
+
+   .header img {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+}
+
+
+    .header h3, .header h4 {
+      margin: 5px;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      animation: fadeUp 1s ease-out 0.3s forwards;
+      opacity: 0;
+    }
+
+    .logo img {
+      max-width: 130px;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      margin: 30px auto;
+      animation: fadeUp 1s ease-out 0.6s forwards;
+      opacity: 0;
+    }
+
+    .container p {
+      text-align: justify;
+      margin-bottom: 20px;
+      color: #eee;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: #ddd;
+    }
+
+    .form-group input,
+    .form-group textarea,
+   .form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #ffffffdd;
+  font-family: inherit;
+  color: #333; /* pastikan teks terlihat */
+}
+
+
+    .form-group textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    .form-group button {
+      width: 100%;
+      background-color: #00aaff;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .form-group button:hover {
+      background-color: #0088cc;
+      transform: translateY(-2px);
+    }
+
+    .footer {
+      background-color: #001d3d;
+      color: white;
+      text-align: center;
+      padding: 15px 10px;
+      margin-top: auto;
+      font-size: 0.9em;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 20px;
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="animation/Customer.gif" alt="Header Image">
+    <h3>Pusat Pelayanan Warga Kelurahan</h3>
+    <h4>Pejarakan Karya Ampenan</h4>
+  </div>
+
+  <div class="logo">
+    <img src="images/logo/ekarya.png" alt="Logo">
+  </div>
+
+  <div class="container">
+    <p>Kelurahan Pejarakan Karya Ampenan membuka akses bagi semua warganya untuk memberikan <b>masukan, saran, dan atau keluhan</b> terhadap semua jenis pelayanan atau kondisi di lingkungan masing-masing. Silakan isi form berikut ini jika ada yang ingin disampaikan:</p>
+
+    <div class="form-group">
+      <label for="name">Nama:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="whatsapp">Nomor WhatsApp Anda:</label>
+      <input type="text" id="whatsapp" name="whatsapp" required>
+    </div>
+
+    <div class="form-group">
+      <label for="area">Lingkungan Anda:</label>
+      <select id="area" name="area" required>
+         <option value="">-- Pilih Lingkungan Anda --</option>
+        <option value="Warga Lingkungan Moncok">Warga Lingkungan Moncok</option>
+        <option value="Warga Lingkungan Moncok Telaga Mas">Warga Lingkungan Moncok Telaga Mas</option>
+        <option value="Warga Lingkungan Pejarakan">Warga Lingkungan Pejarakan</option>
+        <option value="Warga Lingkungan Penan">Warga Lingkungan Penan</option>
+      </select>
+    </div>
+
+   <div class="form-group">
+  <label for="type">Jenis Pesan:</label>
+  <select id="type" name="type" required>
+    <option value="">-- Pilih Jenis Pesan --</option>
+    <option value="Saran atau Masukan">Saran atau Masukan</option>
+    <option value="Aduan">Aduan</option>
+  </select>
+</div>
+
+
+    <div class="form-group">
+      <label for="complaint">Isi Pesan:</label>
+      <textarea id="complaint" name="complaint" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <button type="button" onclick="sendToWhatsApp()">Kirim</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; <b>2025 Pusat Pelayanan Warga<br>Kelurahan Pejarakan Karya Ampenan</b>
+  </div>
+
+  <script>
+    function sendToWhatsApp() {
+      const name = document.getElementById('name').value.trim();
+      const whatsapp = document.getElementById('whatsapp').value.trim();
+      const area = document.getElementById('area').value;
+      const type = document.getElementById('type').value;
+      const complaint = document.getElementById('complaint').value.trim();
+
+      if (!name || !whatsapp || !area || !complaint || !type) {
+        alert('Harap isi semua kolom sebelum mengirim.');
+        return;
+      }
+
+      const message =
+        `*Pelayanan Masyarakat E-KARYA*\n` +
+        `=====================\n` +
+        `Nama: ${name}\n` +
+        `Nomor WhatsApp: ${whatsapp}\n` +
+        `Lingkungan: ${area}\n` +
+        `Jenis Pesan: *${type}*\n` + 
+        `Isi:\n${complaint}\n` +
+        `=====================\n` +
+        `Terima kasih telah menghubungi pelayanan kami.`;
+
+      const whatsappURL = `https://wa.me/6287821456315?text=` + encodeURIComponent(message);
+      window.open(whatsappURL, '_blank');
+    }
+  </script>
+</body>
+</html>

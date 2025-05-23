@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kontak Sosial Media</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom right, #004e92, #000428);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .logo {
+      width: 150px;
+      height: auto;
+      margin-bottom: 25px;
+      opacity: 0;
+      animation: slideDown 1s ease forwards;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    h3 {
+      font-size: 1.5em;
+      margin-bottom: 40px;
+      animation: fadeInText 1s ease forwards;
+      opacity: 0;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes fadeInText {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: background 0.3s ease, transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .social-icons a:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-5px);
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .social-icons a:nth-child(1) { animation-delay: 0.6s; }
+    .social-icons a:nth-child(2) { animation-delay: 0.9s; }
+    .social-icons a:nth-child(3) { animation-delay: 1.2s; }
+
+    .social-icons img {
+      width: 35px;
+      height: 35px;
+      margin-right: 12px;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 600px) {
+      h3 {
+        font-size: 1.2em;
+      }
+
+      .social-icons {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .social-icons a {
+        justify-content: center;
+      }
+
+      .social-icons img {
+        width: 30px;
+        height: 30px;
+        margin-right: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="images/logo/ekarya.png" alt="Logo" class="logo" />
+
+  <h3>Kontak Resmi Kelurahan<br>Pejarakan Karya Ampenan</h3>
+
+  <div class="social-icons">
+    <a href="https://wa.me/6287821456315?text=ٱلسَّلَامُ%20عَلَيْكُمْ%20وَرَحْمَةُ%20ٱللَّٰهِ%20وَبَرَكَاتُهُ%0A%0ASalam%20Sejahtera%20Admin.%20*Saya*%0A(Cantumkan%20Informasi%20Lengkap%20Anda%20Di%20Bawah):%0A*Nama%20Lengkap*:%0A*Nama%20Lingkungan*:%0A*Profesi*:%0AIngin%20konsultasi." target="_blank">
+      <img src="animation/WA.gif" alt="WhatsApp Icon" /> WhatsApp Kami
+    </a>
+    <a href="https://www.instagram.com/kelurahan_pejarakan_karya?igsh=ZDBkazJ1cGg1aXNo" target="_blank">
+      <img src="animation/IG.gif" alt="Instagram Icon" /> Instagram Kami
+    </a>
+    <a href="https://www.facebook.com/profile.php?id=100089868786825&mibextid=kFxxJD" target="_blank">
+      <img src="animation/FB.gif" alt="Facebook Icon" /> Facebook Kami
+    </a>
+  </div>
+</body>
+</html>

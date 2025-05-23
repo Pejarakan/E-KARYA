@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tanya-Jawab E-KARYA</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(120deg, #001f4d, #0056b3, #003366);
+      background-size: 400% 400%;
+      animation: bgFlow 10s ease infinite;
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    @keyframes bgFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #logo {
+      width: 120px;
+      margin: 30px auto 10px;
+      opacity: 0;
+      transform: translateY(-10px);
+      display: block;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    .pulse {
+      animation: pulse 2.5s infinite;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .header {
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      opacity: 0;
+      animation: fadeIn 1.5s ease forwards;
+      animation-delay: 1.5s;
+      margin-bottom: 30px;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: auto;
+      background-color: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(8px);
+      padding: 18px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .accordion {
+      background-color: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      cursor: pointer;
+      padding: 14px;
+      margin: 10px 0;
+      width: 100%;
+      border: none;
+      text-align: left;
+      font-size: 16px;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .accordion:hover,
+    .accordion.active {
+      background-color: rgba(0, 123, 255, 0.5);
+    }
+
+    .panel {
+      padding: 0 14px 14px;
+      display: none;
+      background-color: rgba(0, 0, 0, 0.1);
+      border-radius: 0 0 10px 10px;
+      color: #f0f0f0;
+    }
+
+    .panel ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    .faq-item {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+      padding: 0 5px; /* Tambah ruang 16px di kiri dan kanan */
+    }
+
+    .faq-item.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+      .faq-item p {
+  text-align: justify;
+}
+
+
+    @media (max-width: 600px) {
+      body {
+        font-size: 14px;
+      }
+      .accordion {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <img id="logo" src="images/logo/ekarya.png" alt="Logo <b>E-KARYA</b>" />
+
+  <!-- Header -->
+  <div class="header">TANYA JAWAB TENTANG:<br>Aplikasi <b>E-KARYA</b></div>
+
+  <!-- FAQ Content -->
+  <div class="content" id="faqContent">
+    <div class="faq-item"><button class="accordion">1. Apa itu aplikasi <b>E-KARYA</b>?</button>
+      <div class="panel">
+	  <p><b>E-KARYA (Elektronik - Kecepatan Administrasi Rakyat)</b> adalah aplikasi resmi yang diluncurkan oleh Kelurahan Pejarakan Karya Ampenan untuk mempermudah warga dalam mengakses layanan publik, mendapatkan informasi, serta melaporkan masalah atau memberikan masukan kepada pihak kelurahan secara langsung dan online.</p>
+</div>
+    </div>
+
+    <div class="faq-item"><button class="accordion">2. Apa tujuan utama dari aplikasi <b>E-KARYA</b>?</button>
+      <div class="panel"><p>Tujuan utama <b>E-KARYA</b> adalah untuk meningkatkan kualitas pelayanan publik, mempermudah akses informasi, serta mendukung komunikasi dan interaksi antara pemerintah kelurahan dan masyarakat dengan cara yang lebih efisien dan efektif.</p>
+</div>
+    </div>
+
+    <div class="faq-item"><button class="accordion">3. Siapa saja yang bisa menggunakan aplikasi <b>E-KARYA</b>?</button>
+      <div class="panel"><p>Aplikasi ini ditujukan untuk seluruh warga Kelurahan Pejarakan Karya Ampenan yang ingin mengakses layanan kelurahan, melaporkan masalah, atau mendapatkan informasi terkait administrasi publik di wilayah tersebut.</p>
+</div>
+    </div>
+
+    <div class="faq-item"><button class="accordion">4. Apa saja fitur yang ada di dalam aplikasi <b>E-KARYA</b>?</button>
+      <div class="panel">
+        <p>Beberapa fitur utama aplikasi <b>E-KARYA</b> meliputi:</p>
+          <ul>
+           <li>Akses informasi penting terkait kelurahan</li>
+               <li>Pengajuan layanan administrasi kelurahan</li>
+               <li>Pengaduan atau laporan permasalahan</li>
+               <li>Fitur komunikasi langsung dengan pemerintah kelurahan</li>
+           </ul>
+      </div>
+    </div>
+
+    <div class="faq-item"><button class="accordion">5. Bagaimana cara mengakses aplikasi <b>E-KARYA</b>?</button>
+      <div class="panel"><p><b><b>E-KARYA</b></b> dapat diakses melalui gadget (smartphone) Anda dengan mengunduh aplikasi ini dari Google Play Store atau menggunakan link website resmi yang bisa digunakan khusus untuk perangkat mobile <b>(Android)</b> sehingga bisa digunakan oleh pemilik perangkat smartphone versi <b>Android</b> apapun, sesuai dengan jenis perangkat yang Anda gunakan.</p></div>
+    </div>
+
+   <div class="faq-item"><button class="accordion">6. Apakah aplikasi <b>E-KARYA</b> gratis?</button>
+  <div class="panel"><p>Ya, aplikasi <b>E-KARYA</b> dapat diakses secara gratis oleh seluruh warga Kelurahan Pejarakan Karya Ampenan.</p>
+  </div>
+</div>
+
+    <div class="faq-item"><button class="accordion">7. Apa yang harus dilakukan jika ada kendala?</button>
+      <div class="panel"><p>Jika Anda mengalami kesulitan atau ada masalah saat menggunakan aplikasi, Anda dapat menghubungi tim dukungan melalui fitur bantuan yang ada di dalam aplikasi atau menghubungi pihak kelurahan melalui kanal komunikasi resmi yang telah disediakan.</p></div>
+    </div>
+       </div>
+
+<div class="faq-item">
+  <p style="text-align: justify;">
+    <b>Jika Anda memiliki pertanyaan lainnya, silakan menghubungi kami melalui fitur yang ada di dalam aplikasi atau melalui kanal komunikasi resmi kami. Kami siap membantu Anda!</b>
+  </p>
+</div>
+
+  <script>
+    // Accordion logic
+    const acc = document.getElementsByClassName("accordion");
+    for (let i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        const allPanels = document.querySelectorAll(".panel");
+        allPanels.forEach(p => { if (p !== panel) p.style.display = "none"; });
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+      });
+    }
+
+    // Animasi berjalan setelah halaman dimuat
+    window.addEventListener("load", () => {
+      // Tambahkan efek pulse setelah fadeIn selesai
+      setTimeout(() => {
+        document.getElementById("logo").classList.add("pulse");
+      }, 1500);
+
+      // Tampilkan konten setelah header muncul
+      setTimeout(() => {
+        const content = document.getElementById("faqContent");
+        content.style.opacity = "1";
+
+        const items = document.querySelectorAll(".faq-item");
+        items.forEach((item, i) => {
+          setTimeout(() => {
+            item.classList.add("show");
+          }, i * 500);
+        });
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Syarat dan Ketentuan - E-KARYA (Smart City)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      background: linear-gradient(to bottom right, #003b88, #005f99);
+      overflow-x: hidden;
+    }
+
+    .logo-container {
+      text-align: center;
+      margin: 30px 0 10px;
+    }
+
+    .logo {
+      width: 150px;
+      opacity: 0;
+      transform: scale(0.8);
+      animation: zoomIn 1.2s forwards ease-out;
+    }
+
+    @keyframes zoomIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 30px 25px;
+      max-width: 900px;
+      margin: 20px auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    #toggleBtn {
+      padding: 10px 20px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.15);
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 25px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn 1s forwards;
+      animation-delay: 1.3s;
+      pointer-events: none;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section {
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .animate-in {
+      animation: fadeInUp 0.6s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    section h4 {
+      cursor: pointer;
+      margin-bottom: 10px;
+      padding: 12px 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+
+    section h4:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .section-content {
+      background: rgba(255, 255, 255, 0.07);
+      padding: 15px 20px;
+      border-radius: 10px;
+      margin-top: 10px;
+      display: none;
+      text-align: justify;
+    }
+
+    .section-content.show {
+      display: block;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <img src="images/logo/ekarya.png" alt="E-KARYA Logo" class="logo" id="logo" />
+  </div>
+
+  <div class="card">
+    <div class="content" style="text-align: center;">
+      <button onclick="toggleAllSections()" id="toggleBtn">TAMPILKAN SEMUA SYARAT</button>
+    </div>
+
+    <div class="content">
+      <section><h4 onclick="toggleSection(this)">1. Penerimaan Syarat dan Ketentuan ⬇️</h4>
+        <div class="section-content">
+            <p> Dengan mengakses atau menggunakan aplikasi <b>E-KARYA</b>, Anda menyatakan telah membaca, memahami, dan menyetujui untuk terikat oleh Syarat dan Ketentuan ini. Jika Anda tidak setuju dengan salah satu ketentuan, Anda tidak diperkenankan untuk menggunakan aplikasi ini.</p>
+        </div>
+      </section>
+
+      <section><h4 onclick="toggleSection(this)">2. Perubahan Syarat dan Ketentuan ⬇️</h4>
+        <div class="section-content">
+            <p><b>Kelurahan Pejarakan Karya</b> Ampenan berhak untuk mengubah atau memperbarui Syarat dan Ketentuan ini kapan saja tanpa pemberitahuan terlebih dahulu. Perubahan akan berlaku segera setelah diunggah ke aplikasi. Pengguna diharapkan untuk secara rutin membaca syarat ini.</p>
+        </div>
+      </section>
+
+      <section><h4 onclick="toggleSection(this)">3. Kewajiban Pengguna ⬇️</h4>
+        <div class="section-content">
+		<p>Sebagai pengguna, Anda setuju untuk:</p>
+          <ul>
+            <li>Menggunakan aplikasi ini hanya untuk keperluan yang sah dan sesuai dengan fungsinya.</li>
+                <li>Tidak menyalahgunakan layanan untuk tujuan penipuan, spamming, atau aktivitas lain yang merugikan pihak lain.</li>
+                <li>Memastikan data yang Anda berikan (jika diminta) adalah benar dan akurat.</li>
+            </ul>
+        </div>
+      </section>
+
+      <section><h4 onclick="toggleSection(this)">4. Layanan yang Disediakan ⬇️</h4>
+        <div class="section-content">
+         <p>Aplikasi <b>E-KARYA</b> menyediakan layanan berikut:</p>
+            <ul>
+                <li>Pengelolaan layanan administratif <b>Kelurahan Pejarakan Karya Ampenan</b>.</li>
+                <li>Akses informasi terkini tentang kegiatan dan program kelurahan.</li>
+                <li>Fitur pemesanan produk lokal dari warga setempat.</li>
+            </ul>
+        </div>
+      </section>
+
+      <section><h4 onclick="toggleSection(this)">5. Hak Kekayaan Intelektual ⬇️</h4>
+        <div class="section-content">
+            <p> Semua konten, desain, dan fitur dalam aplikasi ini adalah milik <b>Kelurahan Pejarakan Karya Ampenan</b> dan <b>Developer Lombok IT</b>. Anda tidak diperkenankan untuk menyalin, memodifikasi, atau mendistribusikan konten tanpa izin resmi.</p>
+        </div>
+      </section>
+
+      <section><h4 onclick="toggleSection(this)">6. Batasan Tanggung Jawab ⬇️</h4>
+        <div class="section-content">
+          <p><b>Kelurahan Pejarakan Karya Ampenan</b> dan <b>Developer Lombok IT</b> tidak bertanggung jawab atas kerugian yang mungkin timbul akibat:</p>
+            <ul>
+                <li>Penggunaan aplikasi ini secara tidak benar.</li>
+                <li>Kegagalan sistem, bug, atau gangguan teknis lainnya.</li>
+                <li>Konten dari tautan pihak ketiga (WhatsApp, Facebook, Instagram, dan YouTube).</li>
+            </ul>
+        </div>
+      </section>
+
+      <section><h4 onclick="toggleSection(this)">7. Penghentian Layanan ⬇️</h4>
+        <div class="section-content">
+            <p> Kami berhak untuk menghentikan layanan aplikasi ini kapan saja, baik sementara maupun permanen, baik dengan atau tanpa pemberitahuan sebelumnya jika aplikasi ini tidak digunakan sebagaimana mestinya.</p>
+        </div>
+      </section>
+
+      <section><h4 onclick="toggleSection(this)">8. Kontak ⬇️</h4>
+        <div class="section-content">
+		    <p>Jika Anda memiliki pertanyaan atau memerlukan informasi lebih lanjut, silakan hubungi kami:</p>
+			<p> <strong>Kelurahan Pejarakan Karya Ampenan</strong>
+                <br /> <b>Alamat:</b> Jl. Gotong Royong No. 258, Moncok Karya, Ampenan, Nusa Tenggara Barat
+                <br /> <b>Email:</b> pejarakarankaryaampenan@gmail.com </p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    function toggleSection(header) {
+      const content = header.nextElementSibling;
+      content.classList.toggle('show');
+    }
+
+    function toggleAllSections() {
+      const allSections = document.querySelectorAll('.section-content');
+      const btn = document.getElementById('toggleBtn');
+      const anyVisible = Array.from(allSections).some(s => s.classList.contains('show'));
+
+      allSections.forEach(section => {
+        section.classList.toggle('show', !anyVisible);
+      });
+
+      btn.textContent = anyVisible ? "TAMPILKAN SEMUA SYARAT" : "SEMBUNYIKAN SEMUA SYARAT";
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('toggleBtn');
+      const sections = document.querySelectorAll('section');
+
+      // Setelah logo selesai (1.2 detik), munculkan tombol
+      setTimeout(() => {
+        toggleBtn.style.pointerEvents = "auto";
+
+        // Setelah tombol selesai fadeIn (tambahan 1s)
+        setTimeout(() => {
+          sections.forEach((section, index) => {
+            setTimeout(() => {
+              section.classList.add('animate-in');
+            }, index * 200);
+          });
+        }, 1000); // delay setelah tombol
+      }, 1200);
+    });
+  </script>
+</body>
+</html>

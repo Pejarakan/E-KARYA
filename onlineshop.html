@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>E-KARYA (Smart City)</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        /* Header Slider */
+        /* Atur header slider */
+        /* Header GIF */
+        
+        #header-slider {
+            position: relative;
+            width: 100%;
+            height: auto;
+            /* Sesuaikan tinggi dengan proporsi GIF */
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            /* Hilangkan elemen di luar area jika diperlukan */
+        }
+        
+        #header-slider img {
+            width: 100%;
+            /* Pastikan GIF memenuhi lebar header */
+            height: 100%;
+            /* Sesuaikan tinggi secara proporsional */
+            display: block;
+            /* Hilangkan jarak bawaan gambar */
+            object-fit: contain;
+            /* Pastikan seluruh GIF terlihat tanpa terpotong */
+        }
+        /* Animasi gradasi warna bergerak seperti air mengalir */
+        
+        @keyframes flowingColors {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        /* Animasi teks pulsating */
+        
+        @keyframes pulsateText {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 0, 0, 0.8);
+            }
+            50% {
+                transform: scale(1.05);
+                /* Sedikit membesar */
+                opacity: 0.9;
+                /* Sedikit transparan */
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.9), 0 0 15px rgba(0, 255, 255, 0.8);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 0, 255, 0.8);
+            }
+        }
+        /* Efek glow tambahan */
+        
+        @keyframes glowEffect {
+            0% {
+                text-shadow: 0 0 5px white, 0 0 10px #000000, 0 0 15px #ffeb00;
+            }
+            50% {
+                text-shadow: 0 0 5px #00aaff, 0 0 15px #37b600, 0 0 15px #ff00ff;
+            }
+            100% {
+                text-shadow: 0 0 5px #ff0000, 0 0 10px white, 0 0 15px #ffeb00;
+            }
+        }
+        /* Gaya teks "KATEGORI PRODUK KAMI" */
+        
+        .sticky-menu h3 {
+            font-size: 12px;
+            /* Ukuran font */
+            font-weight: bold;
+            color: white;
+            padding: 8px;
+            border-radius: 10px;
+            display: inline-block;
+            background: linear-gradient(90deg,
+                #ff0000 0%,     /* Merah */
+                #d70000 15%,    /* Merah muda */
+                #ffeb00 20%,    /* Kuning terang */
+                #ffffff 25%,    /* Putih (sedikit) */
+                #aaffaa 30%,    /* Hijau muda */
+                #00ff00 50%,    /* Hijau */
+                #0065ff 75%,    /* Biru muda */
+                #0000ff 100%    /* Biru */
+            );
+
+            background-size: 300% 300%;
+            animation: flowingColors 8s infinite linear, pulsateText 3s infinite ease-in-out, glowEffect 4s infinite alternate;
+            /* Efek air mengalir + pulsating + glow */
+            transition: all 0.5s ease;
+        }
+        /* Sticky Menu */
+        
+        .sticky-menu {
+            position: sticky;
+            top: 0;
+            background: #f4f4f4;
+            z-index: 1000;
+            padding: 1px;
+            text-align: center;
+        }
+        
+        .sticky-menu h1 {
+            margin: 0;
+            color: #333;
+        }
+        
+        .menu-buttons {
+            margin-top: 0px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            /* Jarak antar tombol lebih kecil */
+            padding: 5px;
+        }
+        /* Animasi gradasi air mengalir */
+        
+        @keyframes flowingWater {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        /* Gaya tombol menu */
+        
+        .menu-buttons button {
+            position: relative;
+            padding: 10px;
+            background-color: #000000;
+            /* Warna dasar hitam */
+            color: white;
+            cursor: pointer;
+            width: 100px;
+            height: 50px;
+            text-align: center;
+            border-radius: 10px;
+            background-size: 100px 50px;
+            background-repeat: no-repeat;
+            background-position: center top 0px;
+            margin: 1px;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+            overflow: hidden;
+            /* Mencegah efek air keluar dari tombol */
+        }
+        /* Efek Hover pada tombol */
+        
+        .menu-buttons button:hover {
+            background-color: #228B22 !important;
+            /* Warna hijau saat hover */
+            transform: scale(1.05);
+            /* Sedikit perbesar tombol */
+            opacity: 1;
+        }
+        /* Tambahkan efek air mengalir hanya di tombol aktif */
+        
+        .menu-buttons button.active::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #ff0000, #ff7300, #ffeb00, #37b600, #00aaff, #8000ff);
+            background-size: 300% 300%;
+            animation: flowingWater 5s infinite linear;
+            opacity: 0.6;
+            /* Sedikit transparan agar gambar tombol tetap terlihat */
+            border-radius: 15px;
+            z-index: 0;
+        }
+        /* Pastikan teks tetap terlihat di atas efek air mengalir */
+        
+        .menu-buttons button span {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            /* Gunakan flexbox */
+            align-items: center;
+            /* Pusatkan teks secara vertikal */
+            justify-content: center;
+            /* Pusatkan teks secara horizontal */
+            text-align: center;
+            /* Pastikan teks tetap rata tengah */
+            background: rgba(0, 0, 0, 0.44);
+            /* Tetap transparan */
+            color: white;
+            padding: 0px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        /* Tambahkan gambar spesifik untuk setiap kategori */
+        
+        .menu-buttons button:nth-child(1) {
+            background-image: url('images/kategori produk/pertanian.jpg');
+        }
+        
+        .menu-buttons button:nth-child(2) {
+            background-image: url('images/kategori produk/sembako.jpg');
+        }
+        
+        .menu-buttons button:nth-child(3) {
+            background-image: url('images/kategori produk/makanan.jpg');
+        }
+        
+        .menu-buttons button:nth-child(4) {
+            background-image: url('images/kategori produk/katering.jpg');
+        }
+        
+        .menu-buttons button:nth-child(5) {
+            background-image: url('images/kategori produk/busana.jpg');
+        }
+        
+        .menu-buttons button:nth-child(6) {
+            background-image: url('images/kategori produk/jasa.jpg');
+        }
+        /* Produk Layout */
+        
+        .products {
+            display: none;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            /* Memberi jarak antar produk */
+            margin: 0px;
+        }
+        
+        .products.active {
+            display: flex;
+        }
+        
+        .product {
+            width: calc(50% - 20px);
+            /* 50% lebar ditambah margin untuk spasi */
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: justify;
+            box-sizing: border-box;
+            font-size: 12px;
+        }
+        
+        .product img {
+            width: 100%;
+            height: auto;
+            /* Biarkan tinggi menyesuaikan proporsi gambar */
+            border-radius: 10px;
+            object-fit: contain;
+            /* Pastikan seluruh gambar terlihat tanpa terpotong */
+            background-color: #f4f4f4;
+            /* Tambahkan latar belakang jika ukuran gambar tidak pas */
+        }
+        
+    .product .slider img {
+		transition: transform 0.3s ease-in-out;
+		touch-action: manipulation;
+	}
+
+    .product .slider {
+		position: relative;
+		overflow: hidden;
+	}
+        
+    .product .slider img {
+        display: none;
+    }
+     
+    .product .slider img.active {
+        display: block;
+    }
+        
+    .product .slider .arrow {
+         position: absolute;
+         top: 50%;
+         transform: translateY(-50%);
+         background: #0065ff;
+         color: rgb(255, 255, 255);
+         border: none;
+         border-radius: 25%;
+         width: 25px;
+         height: 30px;
+         cursor: pointer;
+         opacity: 0.7;
+    }
+        
+        .product .slider .arrow:hover {
+            opacity: 1;
+        }
+        
+        .product .slider .left {
+            left: 1px;
+        }
+        
+        .product .slider .right {
+            right: 1px;
+        }
+        
+        .product h3 {
+            margin: 10px 0 5px;
+        }
+        
+        .product p {
+            margin: 0 0 10px;
+            color: #555;
+        }
+        
+        .product .price {
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        
+        .product button {
+            padding: 8px 12px;
+            background-color: #0065ff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        .product button:hover {
+            background-color: darkgreen;
+        }
+        
+        #cart-btn {
+            position: fixed;
+            bottom: 0px;
+            right: 1px;
+            background: #00aaff;
+            width: 100px;
+            height: 50px;
+            background-image: url('animation/keranjang.gif');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #090000;
+            border: none;
+            border-radius: 10px;
+            padding: 5px 25px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+           
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            /* Efek Glow pada Teks */
+            text-shadow: 0px 0px 8px #00aaff, 0px 0px 12px white;
+        }
+        /* Warna Teks & Lingkaran Putih Di Keranjang */
+        
+        #cart-btn span {
+            background: #ff0000;
+            color: white;
+            font-size: 12px;
+            border-radius: 50%;
+            padding: 5px;
+            margin-left: 3px;
+            /* Hilangkan margin agar teks tetap di tengah */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+		
+        /* Modal Cart */
+        
+        #cart-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            padding: 20px;
+            z-index: 2000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            /* Pusatkan teks dalam modal */
+        }
+        
+        #cart-modal h2 {
+            margin: 0 0 20px;
+            text-align: center;
+            /* Pusatkan teks heading */
+        }
+        
+        #cart-modal ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            /* Pusatkan teks dalam daftar */
+        }
+        
+        #cart-modal ul li {
+            margin: 0px 0;
+            display: flex;
+            font-size: 12px;
+            font-weight: bold;
+            justify-content: space-between;
+            align-items: center;
+            /* Pusatkan item dalam daftar */
+        }
+        
+        #cart-modal button {
+            padding: 12px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #097e00;
+            color: white;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+        
+        #cart-modal button:hover:not(:disabled) {
+            background: #ff0000;
+        }
+        /* Tombol Lunasi Pesanan */
+        
+#cart-modal button#checkout-btn {
+    padding: 12px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background: #097e00;
+    color: white;
+    margin-top: 10px;
+    transition: background 0.2s;
+    animation: pulsate 1s ease-in-out infinite;
+}
+
+/* Efek pulsating lembut */
+	@keyframes pulsate {
+		0% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    }
+		50% {
+        transform: scale(1.04);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+		100% {
+        transform: scale(1);
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+    }
+}
+
+
+        
+        #cart-modal button#checkout-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        #cart-modal button#checkout-btn:hover:not(:disabled) {
+            background: #ff0000;
+        }
+        
+        #cart-items button {
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            background-color: #0065ff;
+            color: white;
+            cursor: pointer;
+        }
+        
+        #cart-items button:hover {
+            background-color: #ff0000;
+        }
+        
+        .product .order-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 8px 0;
+            gap: 5px;
+        }
+        
+        .product .order-controls button {
+            flex: 1;
+            padding: 5px 8px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        /* Container pesan jika kategori kosong */
+        
+        .no-products {
+            width: 100%;
+            overflow: hidden;
+            background: transparent;
+            padding: 20px 0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .marquee-wrapper {
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .marquee-scroll {
+            display: inline-block;
+            font-weight: bold;
+            font-size: 14px;
+            color: #ff0000;
+            padding-left: 100%;
+            animation: scroll-left 10s linear infinite;
+        }
+        
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+         
+        .close-button {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 24px;
+        cursor: pointer;
+        color: red;
+        background-color: white;
+        border-radius: 50%;
+        padding: 5px 10px;
+        line-height: 1;
+        box-shadow: 0 0 2px #ff0000;
+        transition: all 0.3s ease;
+    }
+
+    .close-button:hover {
+        background-color: red;
+        color: white;
+        box-shadow: 0 0 4px #ff0000;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Header GIF -->
+    <div id="header-slider"> <img alt="Header GIF" src="animation/pejarakan.gif" /> </div>
+    <!-- Sticky Menu -->
+    <div class="sticky-menu">
+        <h3>KATEGORI PRODUK KAMI</h3>
+        <div class="menu-buttons">
+            <button onclick="showProducts('pertanian')"> <b><span>Pertanian</span></b> </button>
+            <button onclick="showProducts('sembako')"> <b><span>SEMBAKO</span></b> </button>
+            <button onclick="showProducts('makanan')"> <b><span>Makanan</span></b> </button>
+            <button onclick="showProducts('katering')"> <b><span>Katering</span></b> </button>
+            <button onclick="showProducts('busana')"> <b><span>Busana</span></b> </button>
+            <button onclick="showProducts('jasa')"> <b><span>Jasa<br/>Teknis</span></b> </button>
+            <button id="cart-btn" onclick="toggleCart()"><b>Keranjang</b> <span id="cart-count">0</span></button>
+        </div>
+    </div>
+	
+	
+    <!-- Input Semua Produk PERTANIAN Anda Dibawah -->
+    <div class="products" id="pertanian">
+        <div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Pertanian/Beras Merah 1.jpg" /> 
+			<img src="images/produk/Pertanian/Beras Merah 2.jpg"> 
+			<img src="images/produk/Pertanian/Beras Merah 3.jpg" />
+                <div class="price">Rp 16.000</div>
+                <div class="product-qty" data-name="Beras Merah">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Beras Merah', -1)">-</button>
+                <button onclick="addToCart('Beras Merah', 16000)">Pesan</button>
+                <button onclick="changeQuantity('Beras Merah', 1)">+</button>
+            </div>
+            <h4>Beras Merah</h4>
+            <p style="text-align:justify;">Produk ini adalah produk hasil pertanian warga pejarakan. Dijual perkilo.</p>
+        </div>
+		
+        <div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Pertanian/Daun Daluman 1.jpg" /> 
+			<img src="images/produk/Pertanian/Daun Daluman 2.jpg"> 
+			<img src="images/produk/Pertanian/Daun Daluman 3.jpg" />
+                <div class="price">Rp 10.000</div>
+                <div class="product-qty" data-name="Daun Daluman">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Daun Daluman', -1)">-</button>
+                <button onclick="addToCart('Daun Daluman', 10000)">Pesan</button>
+                <button onclick="changeQuantity('Daun Daluman', 1)">+</button>
+            </div>
+            <h4>Daun Daluman</h4>
+            <p style="text-align:justify;">Produk ini adalah produk hasil pertanian warga pejarakan. Dijual perkilo.</p>
+        </div>
+		
+        <div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Pertanian/Jagung Ketan Hitam 1.jpg" /> 
+			<img src="images/produk/Pertanian/Jagung Ketan Hitam 2.jpg"> 
+			<img src="images/produk/Pertanian/Jagung Ketan Hitam 3.jpg" />
+                <div class="price">Rp 10.000</div>
+                <div class="product-qty" data-name="Jagung Ketan Hitam">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Jagung Ketan Hitam', -1)">-</button>
+                <button onclick="addToCart('Jagung Ketan Hitam', 10000)">Pesan</button>
+                <button onclick="changeQuantity('Jagung Ketan Hitam', 1)">+</button>
+            </div>
+            <h4>Jagung Ketan Hitam</h4>
+            <p style="text-align:justify;">Produk ini adalah produk hasil pertanian warga pejarakan. Dijual perkilo.</p>
+        </div>
+
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Pertanian/Jeruk Nagoya 1.jpg" /> 
+			<img src="images/produk/Pertanian/Jeruk Nagoya 2.jpg"> 
+			<img src="images/produk/Pertanian/Jeruk Nagoya 3.jpg" />
+                <div class="price">Rp75.000</div>
+                <div class="product-qty" data-name="Jeruk Nagoya">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Jeruk Nagoya', -1)">-</button>
+                <button onclick="addToCart('Jeruk Nagoya', 75000)">Pesan</button>
+                <button onclick="changeQuantity('Jeruk Nagoya', 1)">+</button>
+            </div>
+            <h4>Jeruk Nagoya</h4>
+            <p style="text-align:justify;">Produk ini adalah produk hasil pertanian warga pejarakan. Dijual perkilo.</p>
+        </div>
+		
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Pertanian/Labu Biasa 1.jpg" /> 
+			<img src="images/produk/Pertanian/Labu Biasa 2.jpg"> 
+			<img src="images/produk/Pertanian/Labu Biasa 3.jpg" />
+                <div class="price">Rp 6.000</div>
+                <div class="product-qty" data-name="Labu Biasa">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Labu Biasa', -1)">-</button>
+                <button onclick="addToCart('Labu Biasa', 6000)">Pesan</button>
+                <button onclick="changeQuantity('Labu Biasa', 1)">+</button>
+            </div>
+            <h4>Labu Biasa</h4>
+            <p style="text-align:justify;">Produk ini adalah produk hasil pertanian warga pejarakan. Dijual perkilo.</p>
+        </div>
+		
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Pertanian/Labu Madu 1.jpg" /> 
+			<img src="images/produk/Pertanian/Labu Madu 2.jpg"> 
+			<img src="images/produk/Pertanian/Labu Madu 3.jpg" />
+                <div class="price">Rp 12.000</div>
+                <div class="product-qty" data-name="Labu Madu">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Labu Madu', -1)">-</button>
+                <button onclick="addToCart('Labu Madu', 12000)">Pesan</button>
+                <button onclick="changeQuantity('Labu Madu', 1)">+</button>
+            </div>
+            <h4>Labu Madu</h4>
+            <p style="text-align:justify;">Produk ini adalah produk hasil pertanian warga pejarakan. Dijual perkilo.</p>
+        </div>
+		
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Pertanian/Sawi Asinan 1.jpg" /> 
+			<img src="images/produk/Pertanian/Sawi Asinan 2.jpg"> 
+			<img src="images/produk/Pertanian/Sawi Asinan 3.jpg" />
+                <div class="price">Rp 10.000</div>
+                <div class="product-qty" data-name="Sawi Asinan">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Sawi Asinan', -1)">-</button>
+                <button onclick="addToCart('Sawi Asinan', 10000)">Pesan</button>
+                <button onclick="changeQuantity('Sawi Asinan', 1)">+</button>
+            </div>
+            <h4>Sawi Asinan</h4>
+            <p style="text-align:justify;">Produk ini adalah produk hasil pertanian warga pejarakan. Dijual perkilo.</p>
+        </div>
+		
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Pertanian/Sawi Manis 1.jpg" /> 
+			<img src="images/produk/Pertanian/Sawi Manis 2.jpg"> 
+			<img src="images/produk/Pertanian/Sawi Manis 3.jpg" />
+                <div class="price">Rp 10.000</div>
+                <div class="product-qty" data-name="Sawi Manis">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Sawi Manis', -1)">-</button>
+                <button onclick="addToCart('Sawi Manis', 10000)">Pesan</button>
+                <button onclick="changeQuantity('Sawi Manis', 1)">+</button>
+            </div>
+            <h4>Sawi Manis</h4>
+            <p style="text-align:justify;">Produk ini adalah produk hasil pertanian warga pejarakan. Dijual perkilo.</p>
+        </div>
+		
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Pertanian/Tomat 1.jpg" /> 
+			<img src="images/produk/Pertanian/Tomat 2.jpg"> 
+			<img src="images/produk/Pertanian/Tomat 3.jpg" />
+                <div class="price">Rp 5.000</div>
+                <div class="product-qty" data-name="Tomat">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Tomat', -1)">-</button>
+                <button onclick="addToCart('Tomat', 5000)">Pesan</button>
+                <button onclick="changeQuantity('Tomat', 1)">+</button>
+            </div>
+            <h4>Tomat</h4>
+            <p style="text-align:justify;">Produk ini adalah produk hasil pertanian warga pejarakan. Dijual perkilo.</p>
+        </div>
+    </div>
+	
+	
+    <!-- Input Semua Produk SEMBAKO Anda Dibawah -->
+    <div class="products" id="sembako">
+        <div class="no-products">
+            <div class="marquee-wrapper">
+                <div class="marquee-scroll"> <b>"BELUM ADA PRODUK WARGA KAMI TERSEDIA UNTUK KATEGORI INI"</b> </div>
+            </div>
+        </div>
+    </div>
+	
+	
+    <!-- Input Semua Produk MAKANAN Anda Dibawah -->
+    <div class="products" id="makanan">
+        <div class="no-products">
+            <div class="marquee-wrapper">
+                <div class="marquee-scroll"> <b>"BELUM ADA PRODUK WARGA KAMI TERSEDIA UNTUK KATEGORI INI"</b> </div>
+            </div>
+        </div>
+    </div>
+	
+	
+    <!-- Input Semua Produk KATERING Anda Dibawah -->
+    <div class="products" id="katering">
+        <div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Katering/Bingsoo Matcha 1.jpg" /> 
+			<img src="images/produk/Katering/Bingsoo Matcha 2.jpg"> 
+			<img src="images/produk/Katering/Bingsoo Matcha 3.jpg" />
+                <div class="price">Rp 30.000</div>
+                <div class="product-qty" data-name="Bingsoo Matcha">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Bingsoo Matcha', -1)">-</button>
+                <button onclick="addToCart('Bingsoo Matcha', 30000)">Pesan</button>
+                <button onclick="changeQuantity('Bingsoo Matcha', 1)">+</button>
+            </div>
+            <h4>Bingsoo Matcha</h4>
+           <p style="text-align:justify;">Menu Katering Ini Adalah Salah Satu Menu Best Seller Dari Usaha <b>Wisata Kuliner Titik Kumpul</b> Warga <b>Kelurahan Pejarakan Karya.</b></p>
+            <p style="text-align:justify;">Bingsoo Matcha atau Matcha Bingsu adalah cara menyegarkan untuk menyejukkan diri di hari yang panas. Es serut yang ringan dan lembut ini diberi rasa teh hijau matcha, dipadukan dengan kacang merah, mochi kenyal, dan dimaniskan dengan susu kental manis.</p>
+        </div>
+		
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Katering/Es Cream Batok 1.jpg" /> 
+			<img src="images/produk/Katering/Es Cream Batok 2.jpg"> 
+			<img src="images/produk/Katering/Es Cream Batok 3.jpg" />
+                <div class="price">Rp 25.000</div>
+                <div class="product-qty" data-name="Es Cream Batok">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Es Cream Batok', -1)">-</button>
+                <button onclick="addToCart('Es Cream Batok', 25000)">Pesan</button>
+                <button onclick="changeQuantity('Es Cream Batok', 1)">+</button>
+            </div>
+            <h4>Es Cream Batok</h4>
+            <p style="text-align:justify;">Menu Katering Ini Adalah Salah Satu Menu Best Seller Dari Usaha <b>Wisata Kuliner Titik Kumpul</b> Warga <b>Kelurahan Pejarakan Karya.</b></p>
+            <p style="text-align:justify;">Lembutnya tekstur es krim begitu nikmat saat mencair di mulut kita. Apalagi teriknya matahari Kota Khatulistiwa ini membuat rasa haus dalam dahaga begitu cepat datang dan dengan sajian es krim di atas batok kelapa muda menjadi sajian tepat untuk pelepas dahaga.</p>
+        </div>
+		
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Katering/Lalapan Ayam Sambal 1.jpg" /> 
+			<img src="images/produk/Katering/Lalapan Ayam Sambal 2.jpg"> 
+			<img src="images/produk/Katering/Lalapan Ayam Sambal 3.jpg" />
+                <div class="price">Rp 25.000</div>
+                <div class="product-qty" data-name="Lalapan Ayam Sambal">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Lalapan Ayam Sambal', -1)">-</button>
+                <button onclick="addToCart('Lalapan Ayam Sambal', 25000)">Pesan</button>
+                <button onclick="changeQuantity('Lalapan Ayam Sambal', 1)">+</button>
+            </div>
+            <h4>Lalapan Ayam Sambal</h4>
+            <p style="text-align:justify;">Menu Katering Ini Adalah Salah Satu Menu Best Seller Dari Usaha <b>Wisata Kuliner Titik Kumpul</b> Warga <b>Kelurahan Pejarakan Karya.</b></p>
+            <p style="text-align:justify;">Lalapan telah menjadi salah satu makanan favorit di Indonesia. Hidangan ini terkenal karena kesederhanaannya, dengan bahan-bahan berupa sayuran segar yang disajikan mentah atau direbus, dipadukan dengan sambal dan lauk sederhana seperti ayam goreng. Ayam dimasak dengan bumbu lalu diungkep dan digoreng. Disajikan dengan lalapan sayuran bersama sambal terasi.</p>
+        </div>
+		
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Katering/Mie Ayam Komplit 1.jpg" /> 
+			<img src="images/produk/Katering/Mie Ayam Komplit 2.jpg"> 
+			<img src="images/produk/Katering/Mie Ayam Komplit 3.jpg" />
+                <div class="price">Rp 25.000</div>
+                <div class="product-qty" data-name="Mie Ayam Komplit">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Mie Ayam Komplit', -1)">-</button>
+                <button onclick="addToCart('Mie Ayam Komplit', 25000)">Pesan</button>
+                <button onclick="changeQuantity('Mie Ayam Komplit', 1)">+</button>
+            </div>
+            <h4>Mie Ayam Komplit</h4>
+           <p style="text-align:justify;">Menu Katering Ini Adalah Salah Satu Menu Best Seller Dari Usaha <b>Wisata Kuliner Titik Kumpul</b> Warga <b>Kelurahan Pejarakan Karya.</b></p>
+            <p style="text-align:justify;">Mi ayam adalah hidangan khas Indonesia yang terbuat dari mi gandum yang dibumbui dengan potongan daging ayam.</p>
+        </div>
+		
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Katering/Nasi Beef Lada Hitam 1.jpg" /> 
+			<img src="images/produk/Katering/Nasi Beef Lada Hitam 2.jpg"> 
+			<img src="images/produk/Katering/Nasi Beef Lada Hitam 3.jpg" />
+                <div class="price">Rp 30.000</div>
+                <div class="product-qty" data-name="Nasi Beef Lada Hitam">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Nasi Beef Lada Hitam', -1)">-</button>
+                <button onclick="addToCart('Nasi Beef Lada Hitam', 30000)">Pesan</button>
+                <button onclick="changeQuantity('Nasi Beef Lada Hitam', 1)">+</button>
+            </div>
+            <h4>Nasi Beef Lada Hitam</h4>
+            <p style="text-align:justify;">Menu Katering Ini Adalah Salah Satu Menu Best Seller Dari Usaha <b>Wisata Kuliner Titik Kumpul</b> Warga <b>Kelurahan Pejarakan Karya.</b></p>
+            <p style="text-align:justify;">Nasi Beef (Sapi) Lada Hitam adalah hidangan yang sangat populer di berbagai negara, terutama di Asia, termasuk Indonesia, Malaysia, dan Singapura. Hidangan ini merupakan sajian daging sapi yang dipotong tipis dan dimasak dengan bumbu-bumbu yang kaya akan rasa, termasuk lada hitam sebagai bahan utama.</p>
+        </div>
+		
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Katering/Nasi Campur Olah 1.jpg" /> 
+			<img src="images/produk/Katering/Nasi Campur Olah 2.jpg"> 
+			<img src="images/produk/Katering/Nasi Campur Olah 3.jpg" />
+                <div class="price">Rp 18.000</div>
+                <div class="product-qty" data-name="Nasi Campur Olah">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Nasi Campur Olah', -1)">-</button>
+                <button onclick="addToCart('Nasi Campur Olah', 18000)">Pesan</button>
+                <button onclick="changeQuantity('Nasi Campur Olah', 1)">+</button>
+            </div>
+            <h4>Nasi Campur Olah</h4>
+            <p style="text-align:justify;">Menu Katering Ini Adalah Salah Satu Menu Best Seller Dari Usaha <b>Wisata Kuliner Titik Kumpul</b> Warga <b>Kelurahan Pejarakan Karya.</b></p>
+            <p style="text-align:justify;">Menu masakan khas Lombok ini memang sangat mudah ditemui ketika Lebaran Ketupat. Sebab, hampir setiap warga setempat membuat masakan ini. Meski begitu, di hari-hari biasa, olah-olah juga tidak terlalu sulit ditemui. Cukup banyak warung atau rumah makan menyediakan menu masakan ini. Salah satu warung makan yang selalu setia menyediakan olah-olah dapat ditemui di Wisata Kuliner Titik Kumpul.</p>
+        </div>
+		
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Katering/Paket Nasi Gibung 1.jpg" /> 
+			<img src="images/produk/Katering/Paket Nasi Gibung 2.jpg"> 
+			<img src="images/produk/Katering/Paket Nasi Gibung 3.jpg" />
+                <div class="price">Rp 125.000</div>
+                <div class="product-qty" data-name="Paket Nasi Gibung">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Paket Nasi Gibung', -1)">-</button>
+                <button onclick="addToCart('Paket Nasi Gibung', 125000)">Pesan</button>
+                <button onclick="changeQuantity('Paket Nasi Gibung', 1)">+</button>
+            </div>
+            <h4>Paket Nasi Gibung</h4>
+            <p style="text-align:justify;">Menu Katering Ini Adalah Salah Satu Menu Best Seller Dari Usaha <b>Wisata Kuliner Titik Kumpul</b> Warga <b>Kelurahan Pejarakan Karya.</b></p>
+            <p style="text-align:justify;">Bagi penyuka seafood pastinya sudah sangat mengenal yang namanya saus Padang. Saus Padang merupakan salah satu saus yang sering kita jumpai di berbagai masakan Indonesia, termasuk dalam olahan seafood. Bumbu saus Padang memiliki tekstur yang sedikit agak kental dengan warna orange kemerahan dengan perpaduan rasa pedas, manis, dan asin. Perpaduan ketiga rasa yang seimbang ini membuat saus Padang banyak disukai.</p>
+        </div>
+		
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Katering/Seafood Gibung Saus Padang 1.jpg" /> 
+			<img src="images/produk/Katering/Seafood Gibung Saus Padang 2.jpg"> 
+			<img src="images/produk/Katering/Seafood Gibung Saus Padang 3.jpg" />
+                <div class="price">Rp 85.000</div>
+                <div class="product-qty" data-name="Seafood Gibung Saus Padang">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Seafood Gibung Saus Padang', -1)">-</button>
+                <button onclick="addToCart('Seafood Gibung Saus Padang', 85000)">Pesan</button>
+                <button onclick="changeQuantity('Seafood Gibung Saus Padang', 1)">+</button>
+            </div>
+            <h4>Seafood Gibung Saus Padang</h4>
+            <p style="text-align:justify;">Menu Katering Ini Adalah Salah Satu Menu Best Seller Dari Usaha <b>Wisata Kuliner Titik Kumpul</b> Warga <b>Kelurahan Pejarakan Karya.</b></p>
+            <p style="text-align:justify;">"Seafood Gibung Saus Padang adalah hidangan lezat khas nusantara yang menyajikan aneka seafood segar seperti kepiting, udang, cumi, dan kerang, dimasak dengan saus Padang pedas manis yang kaya rempah. Disajikan secara gibung atau makan bersama, menu ini cocok dinikmati rame-rame untuk menambah keakraban dan selera makan."</p>
+        </div>
+		
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Katering/Tropical Ice Cream 1.jpg" /> 
+			<img src="images/produk/Katering/Tropical Ice Cream 2.jpg"> 
+			<img src="images/produk/Katering/Tropical Ice Cream 3.jpg" />
+                <div class="price">Rp 30.000</div>
+                <div class="product-qty" data-name="Tropical Ice Cream">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Tropical Ice Cream', -1)">-</button>
+                <button onclick="addToCart('Tropical Ice Cream', 30000)">Pesan</button>
+                <button onclick="changeQuantity('Tropical Ice Cream', 1)">+</button>
+            </div>
+            <h4>Tropical Ice Cream</h4>
+            <p style="text-align:justify;">Menu Katering Ini Adalah Salah Satu Menu Best Seller Dari Usaha <b>Wisata Kuliner Titik Kumpul</b> Warga <b>Kelurahan Pejarakan Karya.</b></p>
+            <p style="text-align:justify;">"Tropical Ice Cream adalah es krim segar dengan cita rasa buah-buahan tropis seperti mangga, nanas, kelapa, dan pisang. Perpaduan rasa manis dan asam yang menyegarkan membuatnya cocok dinikmati di cuaca panas atau sebagai penutup hidangan favoritmu."</p>
+        </div>
+		
+		<div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Katering/Udang Bakar Madu 1.jpg" /> 
+			<img src="images/produk/Katering/Udang Bakar Madu 2.jpg"> 
+			<img src="images/produk/Katering/Udang Bakar Madu 3.jpg" />
+                <div class="price">Rp 17.000</div>
+                <div class="product-qty" data-name="Udang Bakar Madu">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Udang Bakar Madu', -1)">-</button>
+                <button onclick="addToCart('Udang Bakar Madu', 17000)">Pesan</button>
+                <button onclick="changeQuantity('Udang Bakar Madu', 1)">+</button>
+            </div>
+            <h4>Udang Bakar Madu</h4>
+            <p style="text-align:justify;">Menu Katering Ini Adalah Salah Satu Menu Best Seller Dari Usaha <b>Wisata Kuliner Titik Kumpul</b> Warga <b>Kelurahan Pejarakan Karya.</b></p>
+            <p style="text-align:justify;">Udang Bakar Madu ini memrupakan sajian udang yang dibakar dengan saus madu, kecap manis, saus tiram dan saus sambal yang membuat rasanya lezat dan nikmat.</p>
+        </div>
+    </div>
+	
+	
+    <!-- Input Semua Produk BUSANA Anda Dibawah -->
+    <div class="products" id="busana">
+        <div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Busana/Abaya 1.jpg" /> 
+			<img src="images/produk/Busana/Abaya 2.jpg"> 
+			<img src="images/produk/Busana/Abaya 3.jpg" />
+                <div class="price">Rp 350.000</div>
+                <div class="product-qty" data-name="Abaya">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Abaya', -1)">-</button>
+                <button onclick="addToCart('Abaya', 350000)">Pesan</button>
+                <button onclick="changeQuantity('Abaya', 1)">+</button>
+            </div>
+            <h4>Abaya</h4>
+            <p style="text-align:justify;">Busana ini adalah produk impor yang didatangkan oleh warga kelurahan pejarakan karya Ampenan.</p>
+        </div>
+    </div>
+	
+	
+    <!-- Input Semua Produk JASA Anda Dibawah -->
+    <div class="products" id="jasa">
+        <div class="product">
+            <div class="slider"> 
+			<img class="active" src="images/produk/Jasa/Service AC 1.jpg" /> 
+			<img src="images/produk/Jasa/Service AC 2.jpg"> 
+			<img src="images/produk/Jasa/Service AC 3.jpg" />
+                <div class="price">Rp 150.000</div>
+                <div class="product-qty" data-name="Service AC">Total Pesanan = 0</div>
+                <button class="arrow left" onclick="changeImage(this, -1)">‹</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">›</button>
+            </div>
+            <div class="order-controls">
+                <button onclick="changeQuantity('Service AC', -1)">-</button>
+                <button onclick="addToCart('Service AC', 150000)">Pesan</button>
+                <button onclick="changeQuantity('Service AC', 1)">+</button>
+            </div>
+            <h4>Service AC</h4>
+            <p style="text-align:justify;">Jasa service AC ini dipelopori oleh salah satu warga kelurahan pejarakan karya Ampenan.</p>
+        </div>
+    </div>
+	
+	
+    <div id="cart-modal">
+    <h2>Keranjang Belanja</h2>
+    <span class="close-button" onclick="toggleCart()">&times;</span>
+    <ul id="cart-items">
+        <!-- Items will be dynamically added -->
+    </ul>
+    <div> <strong>Sub-Total: <span id="cart-total">0</span></strong> </div>
+    <button disabled="" id="checkout-btn" onclick="checkout()">Lunasi Pesanan</button>
+</div>
+    
+    <script>
+    // Header slider
+    let headerIndex = 0;
+    const headerImages = document.querySelectorAll("#header-slider img");
+    setInterval(() => {
+        headerImages[headerIndex].classList.remove("active");
+        headerIndex = (headerIndex + 1) % headerImages.length;
+        headerImages[headerIndex].classList.add("active");
+    }, 2000);
+
+    // Menu buttons and product visibility
+    function showProducts(categoryId) {
+        document.querySelectorAll(".products").forEach((product) => {
+            product.classList.remove("active");
+        });
+        document.querySelector(`#${categoryId}`).classList.add("active");
+        document.querySelectorAll(".menu-buttons button").forEach((btn) => {
+            btn.classList.remove("active");
+        });
+        event.target.classList.add("active");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll(".menu-buttons button");
+        buttons.forEach(button => {
+            button.addEventListener("click", function () {
+                buttons.forEach(btn => btn.classList.remove("active"));
+                this.classList.add("active");
+            });
+        });
+    });
+
+    // Cart logic
+    let cart = {};
+    const cartCountEl = document.getElementById("cart-count");
+    const cartItemsEl = document.getElementById("cart-items");
+    const cartTotalEl = document.getElementById("cart-total");
+    const cartModal = document.getElementById("cart-modal");
+
+    function addToCart(productName, price) {
+        if (!cart[productName]) {
+            cart[productName] = {
+                price, quantity: 1
+            };
+        } else {
+            cart[productName].quantity += 1;
+        }
+        updateCartUI();
+    }
+
+    // ✅ DIPINDAHKAN ke luar agar bisa digunakan global
+    function updateProductQuantities() {
+        document.querySelectorAll(".product-qty").forEach(el => {
+            const name = el.getAttribute("data-name");
+            const qty = cart[name]?.quantity || 0;
+            el.textContent = `Total Pesanan = ${qty}`;
+        });
+    }
+
+    function updateCartUI() {
+        let totalItems = 0;
+        let totalPrice = 0;
+        cartItemsEl.innerHTML = "";
+
+        for (const [name, { price, quantity }] of Object.entries(cart)) {
+            totalItems += quantity;
+            totalPrice += price * quantity;
+
+            const itemEl = document.createElement("li");
+            itemEl.innerHTML = `
+                <div style="flex: 1; text-align: left;">
+                    ${name} - Rp. ${price.toLocaleString("id-ID")} x ${quantity}
+                </div>
+                <div style="display: flex; gap: 5px;">
+                    <button onclick="changeQuantity('${name}', 1)">+</button>
+                    <button onclick="changeQuantity('${name}', -1)">-</button>
+                </div>
+            `;
+            cartItemsEl.appendChild(itemEl);
+        }
+
+        cartCountEl.textContent = totalItems;
+        cartTotalEl.textContent = `Rp. ${totalPrice.toLocaleString("id-ID")}`;
+
+        // ✅ Pastikan dipanggil selalu, meski cart kosong
+        updateProductQuantities();
+
+        const checkoutBtn = document.getElementById("checkout-btn");
+        checkoutBtn.disabled = totalItems === 0;
+    }
+
+    // ✅ FUNGSI TAMBAHAN untuk ambil harga langsung dari halaman
+    function getPriceByName(productName) {
+        const qtyDiv = document.querySelector(`.product-qty[data-name="${productName}"]`);
+        const priceEl = qtyDiv?.closest(".product")?.querySelector(".price");
+        if (priceEl) {
+            const priceText = priceEl.textContent.replace(/\D/g, "");
+            return parseInt(priceText);
+        }
+        return 0;
+    }
+
+    // ✅ DIMODIFIKASI agar bisa digunakan walau belum pernah klik "Pesan"
+    function changeQuantity(productName, delta) {
+        if (!cart[productName]) {
+            cart[productName] = {
+                price: getPriceByName(productName),
+                quantity: 0
+            };
+        }
+
+        cart[productName].quantity += delta;
+
+        if (cart[productName].quantity <= 0) {
+            delete cart[productName];
+        }
+
+        updateCartUI();
+    }
+
+    function toggleCart() {
+        cartModal.style.display = cartModal.style.display === "block" ? "none" : "block";
+    }
+
+    function checkout() {
+        if (Object.keys(cart).length === 0) {
+            alert("🚨 Keranjang belanja Anda masih kosong! Tambahkan produk terlebih dahulu.");
+            return;
+        }
+
+        let cartItems = '';
+        let totalAmount = 0;
+        let index = 1;
+
+        for (let productName in cart) {
+            const product = cart[productName];
+            const itemTotal = product.price * product.quantity;
+            cartItems += `${index}. *${productName}*\n   ${product.quantity} pcs   | Rp ${itemTotal.toLocaleString()}\n`;
+            totalAmount += itemTotal;
+            index++;
+        }
+
+       const totalText = `*Total Harga:* Rp ${totalAmount.toLocaleString()}`;
+        const arabicGreeting = "*السلام عليكم ورحمة الله وبركاته*\n_Semoga hari Anda penuh berkah dan rezeki lancar._\n";
+        const customerInfo = `*Nama Pemesan:* _(Silakan isi Disini)_\n*Alamat Lengkap:* _(Silakan isi Disini)_`;
+        const shippingQuestion = `*Apakah Semua Sudah Termasuk Ongkos Kirim?*\n *Terima Kasih Sebelumnya*`;
+        const separator = "-------------------------";
+
+        const message =
+              `${arabicGreeting}\n${separator}\n*Pesanan Saya:*\n${cartItems}\n${separator}\n${totalText}\n\n${shippingQuestion}\n\n*Detail Pemesan:*\n${customerInfo}`;
+
+        const phoneNumber = "6287821456315";
+        const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappURL, '_blank');
+    }
+
+    function createProduct(categoryId, productName, price) {
+        const productDiv = document.createElement("div");
+        productDiv.classList.add("product");
+        productDiv.innerHTML = `
+            <div class="slider">
+                <img src="images/Onlineshop/" class="active">
+                <img src="images/Onlineshop/">
+                <img src="images/Onlineshop/">
+                <button class="arrow left" onclick="changeImage(this, -1)">&#8249;</button>
+                <button class="arrow right" onclick="changeImage(this, 1)">&#8250;</button>
+            </div>
+            <h3>${productName}</h3>
+            <p>Deskripsi singkat produk</p>
+            <div class="price">Rp. ${price}</div>
+            <button onclick="addToCart('${productName}', ${price})">Pesan</button>
+        `;
+        document.getElementById(categoryId).appendChild(productDiv);
+    }
+
+    function changeImage(button, direction) {
+        const images = button.parentElement.querySelectorAll("img");
+        let activeIndex = Array.from(images).findIndex((img) => img.classList.contains("active"));
+        images[activeIndex].classList.remove("active");
+        activeIndex = (activeIndex + direction + images.length) % images.length;
+        images[activeIndex].classList.add("active");
+    }
+
+    // Autoslide tiap produk
+    document.addEventListener("DOMContentLoaded", () => {
+        const sliders = document.querySelectorAll(".slider");
+
+        sliders.forEach((slider) => {
+            const images = slider.querySelectorAll("img");
+            let index = 0;
+
+            setInterval(() => {
+                images[index].classList.remove("active");
+                index = (index + 1) % images.length;
+                images[index].classList.add("active");
+            }, 1500);
+        });
+    });
+</script>
+
+</body>
+
+</html>

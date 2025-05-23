@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sambutan Lurah Pejarakan Karya</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(to bottom right, #001f4d, #0056b3);
+      font-family: 'Segoe UI', sans-serif;
+      color: #f0f0f0;
+      overflow-x: hidden;
+    }
+
+    .sambutan-container {
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 24px;
+      border-radius: 15px;
+      background-color: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .logo-kelurahan {
+      width: 150px;
+      display: block;
+      margin: 0 auto 20px;
+      opacity: 0;
+      animation: fadeIn 2s ease forwards, pulse 2.5s infinite ease;
+    }
+
+    .foto-lurah {
+      text-align: center;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 1.4s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    .foto-lurah img {
+      width: 250px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .foto-lurah img:hover {
+      transform: scale(1.03);
+    }
+
+    .sambutan-paragraphs p {
+      text-align: justify;
+      font-size: 15.5px;
+      margin: 12px 0;
+      line-height: 1;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .sambutan-paragraphs p:nth-child(1) { animation-delay: 1s; }
+    .sambutan-paragraphs p:nth-child(2) { animation-delay: 2.3s; }
+    .sambutan-paragraphs p:nth-child(3) { animation-delay: 2.6s; }
+    .sambutan-paragraphs p:nth-child(4) { animation-delay: 2.9s; }
+    .sambutan-paragraphs p:nth-child(5) { animation-delay: 3.2s; }
+    .sambutan-paragraphs p:nth-child(6) { animation-delay: 3.5s; }
+    .sambutan-paragraphs p:nth-child(7) { animation-delay: 3.8s; }
+    .sambutan-paragraphs p:nth-child(8) { animation-delay: 4.1s; }
+    .sambutan-paragraphs p:nth-child(9) { animation-delay: 4.4s; }
+    .sambutan-paragraphs p:nth-child(10) { animation-delay: 4.7s; }
+
+    h3 {
+      text-align: center;
+      color: #d0e6ff;
+      font-size: 24px;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease;
+      animation-delay: 1s;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .highlight {
+      color: #5ac8fa;
+      font-weight: bold;
+      text-shadow: 0 0 6px rgba(90, 200, 250, 0.4);
+      animation: shimmer 2s infinite linear;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    @keyframes shimmer {
+      0% { opacity: 0.7; }
+      50% { opacity: 1; }
+      100% { opacity: 0.7; }
+    }
+
+    @media (max-width: 600px) {
+      .foto-lurah img {
+        width: 180px;
+        height: auto;
+      }
+
+      h3 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sambutan-container">
+    <!-- Logo Kelurahan muncul pertama dengan animasi fade dan pulse -->
+    <img src="images/logo/ekarya.png" alt="Logo Kelurahan Pejarakan Karya" class="logo-kelurahan">
+
+    <!-- Setelah logo, baru muncul foto lurah -->
+    <div class="foto-lurah">
+      <img src="animation/Lurah.gif" alt="Foto Lurah">
+    </div>
+
+    <!-- Judul Sambutan -->
+    <h3>Sambutan dari Bapak Lurah Pejarakan Karya Ampenan</h3>
+
+    <!-- Paragraf muncul satu per satu -->
+    <div class="sambutan-paragraphs">
+      <p><b>اَلسَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</b></p>
+      <p>Yang saya hormati, Bapak/Ibu, serta seluruh warga masyarakat Kelurahan Pejarakan Karya, Ampenan.</p>
+      <p><b>الْحَمْدُ لِلّٰهِ وَالشُّكْرُ لِلّٰهِ</b><br><br>Dengan rasa syukur dan bangga yang mendalam, kami mempersembahkan <b>DUA</b> konsep pelayanan Kelurahan Pejarakan Karya Ampenan dalam bentuk Portal Resmi dan Aplikasi terbaru kami, <br><span class="highlight">E-KARYA</span> (Elektronik - Kecepatan Administrasi Rakyat).</p>
+      <p>Aplikasi ini merupakan wujud nyata dari komitmen kami untuk meningkatkan kualitas layanan dan mempermudah akses informasi bagi seluruh warga Pejarakan Karya.</p>
+      <p>Partisipasi aktif warga sangat membantu kami menciptakan pelayanan publik yang lebih baik dan transparan.</p>
+      <p><b>E-KARYA</b> dirancang memberikan kemudahan akses berbagai informasi penting, pengajuan layanan, serta pelaporan langsung kepada kami secara online.</p>
+      <p>Kami ucapkan terima kasih kepada <b>CEO Developer Lombok IT</b> (Bapak <b>Abdul Kadir Bagis, M. Pd</b>) dan tim atas dedikasi luar biasa hingga kelurahan kami bisa meraih <span class="highlight">Hak Paten Internasional dari Google Developer</span>.</p>
+      <p>Kami berharap <b>E-KARYA</b> dapat menjadi solusi efisien dan efektif dalam mendukung interaksi pemerintah dan masyarakat.</p>
+      <p><b>آمِيْن اللّهُمَّ آمِيْن</b></p>
+      <p><b>وَالسَّلاَمُ عَلَيْكُمْ وَرَحْمَةُ اللهِ وَبَرَكَاتُهُ</b><br><br><strong style="float:right;">Mulhakim, SH.<br>Lurah Pejarakan Karya Ampenan</strong></p>
+    </div>
+  </div>
+</body>
+</html>
