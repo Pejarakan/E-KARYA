@@ -78,17 +78,29 @@
             background: #0056b3;
         }
         
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: black;
-            color: #fff;
-            text-align: center;
-            overflow-x: hidden;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+       html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background: url("images/background-new.jpg") no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 480px;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 0.6); /* agar konten tetap terbaca di atas wallpaper */
+    padding: 0;
+}
         
         header {
             width: 100%;
