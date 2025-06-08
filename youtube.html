@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Video Promosi E-KARYA</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #001f4d, #0056b3);
+      background-size: 400% 400%;
+      animation: gradientFlow 15s ease infinite;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #logo {
+      width: 100px;
+      margin: 30px auto 20px;
+      display: block;
+      animation: zoomIn 1.5s ease forwards;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .pulse-loop {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .map-container {
+      width: 90%;
+      max-width: 900px;
+      background: #001f4d;
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      animation: fadeInUp 1s ease forwards;
+      transform: translateY(20px);
+      opacity: 0;
+      animation-delay: 1s;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .map-header {
+      text-align: center;
+      padding: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .video-link iframe, .video-link img {
+      width: 100%;
+      height: 500px;
+      border: none;
+      display: block;
+      cursor: pointer;
+    }
+
+    .video-link a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .youtube-caption {
+      text-align: center;
+      font-size: 18px;
+      margin: 15px 0 25px;
+      color: #ffffff;
+      font-weight: 500;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @media (max-width: 600px) {
+      .map-header {
+        font-size: 18px;
+        padding: 15px;
+      }
+      .video-link iframe, .video-link img {
+        height: 350px;
+      }
+      .youtube-caption {
+        font-size: 16px;
+        margin: 10px 0 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <img id="logo" src="images/logo/ekarya.png" alt="Logo E-KARYA"/>
+
+  <!-- YouTube Video Container -->
+  <div class="map-container" id="mapSection">
+    <div class="map-header">Channel YouTube Resmi<br>Kelurahan Pejarakan Karya Ampenan<br>(Subscribes, Like, and Share)</div>
+    <div class="video-link">
+      <a href="https://www.youtube.com/watch?v=xBAgi3MM2Qg" target="_blank" title="Tonton di YouTube">
+        <img src="https://img.youtube.com/vi/xBAgi3MM2Qg/hqdefault.jpg" alt="Tonton Video di YouTube">
+      </a>
+    </div>
+    <div class="youtube-caption">Klik Gambar Untuk Membuka<br>Channel YouTube Kelurahan</div>
+  </div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const logo = document.getElementById("logo");
+      logo.addEventListener("animationend", () => {
+        logo.classList.add("pulse-loop");
+      });
+    });
+  </script>
+</body>
+</html>

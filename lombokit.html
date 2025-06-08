@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Promosi Aplikasi E-KARYA</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #001f4d, #0056b3);
+      background-size: 400% 400%;
+      animation: gradientFlow 15s ease infinite;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #logo {
+      width: 100px;
+      margin: 30px auto 20px;
+      display: block;
+      animation: zoomIn 1.5s ease forwards;
+    }
+
+    @keyframes zoomIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .pulse-loop {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .map-container {
+      width: 90%;
+      max-width: 900px;
+      background: #001f4d;
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      animation: fadeInUp 1s ease forwards;
+      transform: translateY(20px);
+      opacity: 0;
+      animation-delay: 1s;
+      animation-fill-mode: forwards;
+      text-align: center;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .map-header {
+      padding: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      background: rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .store-link {
+      padding: 30px 20px;
+    }
+
+    .store-link p {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .store-link a img {
+      width: 160px;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .store-link a img:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+      .map-header {
+        font-size: 18px;
+        padding: 15px;
+      }
+
+      .store-link p {
+        font-size: 16px;
+      }
+
+      .store-link a img {
+        width: 130px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <img id="logo" src="images/logo/lombokit.gif" alt="Logo E-KARYA"/>
+
+  <!-- Container -->
+  <div class="map-container">
+    <div class="map-header">Developer Resmi Kami<br>(Developer Lombok IT)</div>
+    <div class="store-link">
+      <p>Klik Logo Resmi di bawah<br>untuk melihat aplikasi lainnya</p>
+      <a href="https://play.google.com/store/apps/dev?id=5168541788940595530" target="_blank" title="Kunjungi Google Play Developer">
+        <img src="images/logo/playstore.png" alt="Google Play Store Logo" class="pulse-loop">
+      </a>
+    </div> <!-- penutup store-link -->
+  </div> <!-- penutup map-container -->
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const logo = document.getElementById("logo");
+      logo.addEventListener("animationend", () => {
+        logo.classList.add("pulse-loop");
+      });
+    });
+  </script>
+</body>
+</html>

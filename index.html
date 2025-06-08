@@ -2,45 +2,370 @@
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-KARYA "SMART CITY"</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>E-KARYA (Smart City)</title>
     <style>
-         body {
+        /* Tombol Menu */
+        
+        .drawer-button {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 5px;
+            z-index: 100;
+        }
+        /* Drawer Sidebar */
+        
+        .drawer {
+            position: fixed;
+            left: -250px;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.87);
+            transition: left 0.3s;
+            z-index: 101;
+        }
+        /* Konten Drawer */
+        
+        .drawer-content {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .drawer-logo {
+            width: 100px;
+            margin-bottom: 10px;
+        }
+        
+        .drawer-slogan {
+            color: white;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .drawer button {
+            display: flex;
+            align-items: center;
+            /* Sejajarkan gambar dan teks secara vertikal */
+            justify-content: flex-start;
+            width: 85%;
+            margin: 10px 0;
+            padding: 10px;
+            background: #fff;
+            color: #000000;
+            border: none;
+            border-radius: 10px;
+            font-size: 12px;
+            cursor: pointer;
+            gap: 10px;
+            /* Jarak antara ikon dan teks */
+        }
+        
+        .drawer button img {
+            width: 30px;
+            height: 30px;
+        }
+        
+        .drawer button:hover {
+            background: #0056b3;
+        }
+        
+        body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(120deg, #00c6ff, #0072ff);
+            background: black;
             color: #fff;
             text-align: center;
             overflow-x: hidden;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
+        
         header {
             width: 100%;
             height: 250px;
         }
+        
         header iframe {
             width: 100%;
             height: 100%;
         }
-        .logo {
-    		width: 100%;
-    		max-width: 275px;
-    		height: auto;
-    		margin: 10px auto; /* Perkecil margin atas dan bawah */
-		}
+        /* Header dengan Autoslider */
+        
+       .header-slider {
+            width: 100%;
+            max-width: 100%;
+            aspect-ratio: 2 / 1;  /* Misalnya 1000x200 atau 5:1 */
+            position: relative;
+            overflow: hidden;
+            background-color: black; /* Untuk area kosong di atas/bawah */
+        }
 
-		.nav-buttons {
-    		display: flex;
-    		flex-wrap: wrap;
-    		justify-content: center;
-    		gap: 20px;
-    		max-width: 900px;
-    		margin: 10px auto; /* Perkecil jarak antara logo dan tombol */
-    		padding: 10px; /* Perkecil padding juga jika diperlukan */
-		}
+.header-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: relative;   /* Gambar tidak dipotong */
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 0;
+}
+
+.header-slider img.active {
+    opacity: 1;
+}
+        /* Tombol Navigasi */
+        
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 25px;
+            height: 25px;
+            background: rgba(0, 26, 144, 0.7);
+            color: white;
+            border: none;
+            font-size: 15px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+        }
+        
+        .nav-arrow:hover {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .prev {
+            left: 10px;
+        }
+        
+        .next {
+            right: 10px;
+        }
+        
+        .logo {
+            width: 100px;
+            /* Lebar 50% dari elemen induknya */
+            height: 100px;
+            /* Tinggi 50% dari elemen induknya */
+            max-width: 275px;
+            /* Maksimum lebar tetap */
+            margin: 10px auto;
+            /* Perkecil margin atas dan bawah */
+            margin-top: 400px;
+            display: block;
+            /* Pastikan logo tidak berpengaruh pada elemen lain */
+        }
+        
+        @keyframes pulsate {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            /* Membesar sedikit */
+        }
+        
+        @keyframes colorMain {
+            0% {
+                color: #ff0000;
+                transform: scale(1);
+            }
+            /* Merah */
+            25% {
+                color: #ffffff;
+                transform: scale(1.1);
+            }
+            /* Putih */
+            50% {
+                color: #00ba08;
+                transform: scale(1);
+            }
+            /* Hijau */
+            75% {
+                color: #ffffff;
+                transform: scale(1.1);
+            }
+            /* Putih */
+            100% {
+                color: #ff0000;
+                transform: scale(1);
+            }
+            /* Kembali ke Merah */
+        }
+        
+        @keyframes colorMenu {
+            0% {
+                color: #ffffff;
+                transform: scale(1);
+            }
+            /* Putih */
+            25% {
+                color: #ff0000;
+                transform: scale(1.1);
+            }
+            /* Merah */
+            50% {
+                color: #eaff00;
+                transform: scale(1);
+            }
+            /* Kuning */
+            75% {
+                color: #ff0000;
+                transform: scale(1.1);
+            }
+            /* Merah */
+            100% {
+                color: #ffffff;
+                transform: scale(1);
+            }
+            /* Kembali ke Putih */
+        }
+        
+        @keyframes waveLetter {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+            /* Huruf naik turun */
+        }
+        
+        @keyframes glowEffect {
+            0% {
+                text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+            }
+            100% {
+                text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+            }
+        }
+        
+        .main-menu-title {
+            font-size: 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            /* Beri jarak antar huruf */
+            margin-top: 10px;
+            /* Pastikan jaraknya cukup dari logo */
+            position: relative;
+            /* Jangan absolute agar mengikuti flow normal */
+            z-index: 3;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        
+        .main-menu-title span {
+            display: inline-block;
+        }
+        /* Terapkan efek warna, wave, dan glow per huruf dengan delay berbeda */
+        
+        .main-menu-title .m {
+            animation: colorMain 3s infinite linear, waveLetter 1.5s infinite ease-in-out, glowEffect 1.5s infinite ease-in-out;
+        }
+        
+        .main-menu-title .a {
+            animation: colorMain 3s infinite linear, waveLetter 1.5s infinite ease-in-out 0.2s, glowEffect 1.5s infinite ease-in-out 0.2s;
+        }
+        
+        .main-menu-title .i {
+            animation: colorMain 3s infinite linear, waveLetter 1.5s infinite ease-in-out 0.4s, glowEffect 1.5s infinite ease-in-out 0.4s;
+        }
+        
+        .main-menu-title .n {
+            animation: colorMain 3s infinite linear, waveLetter 1.5s infinite ease-in-out 0.6s, glowEffect 1.5s infinite ease-in-out 0.6s;
+        }
+        
+        .main-menu-title .m2 {
+            animation: colorMenu 3s infinite linear, waveLetter 1.5s infinite ease-in-out 0.8s, glowEffect 1.5s infinite ease-in-out 0.8s;
+        }
+        
+        .main-menu-title .e {
+            animation: colorMenu 3s infinite linear, waveLetter 1.5s infinite ease-in-out 1s, glowEffect 1.5s infinite ease-in-out 1s;
+        }
+        
+        .main-menu-title .n2 {
+            animation: colorMenu 3s infinite linear, waveLetter 1.5s infinite ease-in-out 1.2s, glowEffect 1.5s infinite ease-in-out 1.2s;
+        }
+        
+        .main-menu-title .u {
+            animation: colorMenu 3s infinite linear, waveLetter 1.5s infinite ease-in-out 1.4s, glowEffect 1.5s infinite ease-in-out 1.4s;
+        }
+        
+        .refresh-icon {
+            width: 25px;
+            /* Sesuaikan ukuran */
+            height: auto;
+            cursor: pointer;
+            /* Tanda bisa diklik */
+            vertical-align: middle;
+            /* Posisikan sejajar dengan teks */
+            transition: transform 0.3s;
+        }
+        
+        .refresh-icon:hover {
+            transform: scale(1.2);
+            /* Efek membesar saat di-hover */
+        }
+        
+        #pull-to-refresh {
+            position: fixed;
+            top: -80px;
+            /* Awalnya tersembunyi di atas layar */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            /* Ubah ukuran lebar ikon */
+            height: 50px;
+            /* Ubah ukuran tinggi ikon */
+            transition: top 0.2s ease-out;
+            /* Animasi pergerakan */
+            z-index: 9999;
+        }
+        
+        #pull-to-refresh img {
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+        
+       .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 900px;
+            margin: 10px auto 30px;
+            padding: 20px 10px;
+            padding-bottom: 80px; /* Tambah ruang agar tidak tertutup footer */
+        }
+
+        
         .nav-buttons button {
             display: flex;
             align-items: center;
@@ -56,33 +381,49 @@
             cursor: pointer;
             font-size: 12px;
         }
+        
         .nav-buttons button img {
             width: 40px;
             height: 40px;
             margin-bottom: 5px;
         }
+        
         .nav-buttons button:hover {
-            box-shadow: 0 0 15px #ffff00;
+            box-shadow: 0 0 15px #00aa21;
         }
-		
+        
         footer {
-			background-color: rgba(0, 0, 0, 0.7);
-			padding: 0px;
-			position: sticky; /* Ganti fixed dengan sticky */
-			width: 100%;
-			bottom: 0; /* Tetap di bawah */
-			left: 0;
-			z-index: 100; /* Pastikan footer di atas elemen lainnya */
-			font-size: 12px; /* Ukuran font footer yang lebih kecil */
-		}
-
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px;
+            font-size: 12px;
+            text-align: center;
+            z-index: 20;
+        }
+        
+        .animated-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: ;  /* Sesuaikan bagian ini jika gambar tidak proporsional */
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            filter: brightness(100%);
+            /* Sesuaikan nilai warna latar 0%-100% */
+        }
+        
         .animated-background {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
             height: 100%;
-            z-index: -1;
+            width: 100%;
+            z-index: -1; /* Letakkan di belakang semua */
+            overflow: hidden;
         }
 
         .animated-background video {
@@ -92,56 +433,257 @@
         }
 
         /* Media Query untuk layar yang lebih besar */
+        
         @media (min-width: 768px) {
             .animated-background video {
-                object-fit: cover; /* Gunakan cover untuk layar desktop */
+                object-fit: cover;
+                /* Gunakan cover untuk layar desktop */
             }
-
             .nav-buttons button img {
                 width: 30px;
                 height: 30px;
             }
         }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.5);
+            }
+            100% {
+                filter: brightness(1);
+            }
+        }
+        
+        .pulse-shimmer {
+            animation: pulse 2s infinite ease-in-out, shimmer 2s infinite ease-in-out;
+            transition: transform 0.3s, filter 0.3s;
+        }
+         .drawer-slogan {
+            font-size: 15px;
+            color: #fff;
+            text-align: center;
+            animation: pulseText 2s ease-in-out infinite;
+        }
+
+  @keyframes pulseText {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.7;
+    }
+  }
     </style>
 </head>
 
 <body>
-    <div class="animated-background">
-        <video autoplay loop muted playsinline>
-            <source src="background/background.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+    <!-- Tombol untuk membuka drawer -->
+    <button class="drawer-button" onclick="openDrawer()">☰ Menu</button>
+    <!-- Drawer Sidebar -->
+    <div class="drawer" id="drawer">
+        <div class="drawer-content">
+            <!-- Logo --><img alt="Logo" class="drawer-logo" src="images/logo/ekarya.png" />
+            <!-- Slogan -->
+            <p class="drawer-slogan"><b>"IKHTIAR & BERKARYA"</b></p>
+            <!-- Menu -->
+            <button onclick="location.href='lisensi.html'"> <img alt="Aplikasi Lombok IT" height="25" src="animation/patent.gif" width="25"> <span>Lisensi & Atribusi</span>
+            </button>
+            <button onclick="location.href='youtube.html'"> <img alt="Channel YouTube" height="25" src="animation/youtube.gif" width="25" /> <span>Channel YouTube Kelurahan</span> </button>
+            <button onclick="location.href='lombokit.html'"> <img alt="Pesan Aplikasi" height="25" src="images/logo/logo animasi.gif" width="25" /> <span>Developer Resmi Kami</span> </button>
+        </div>
     </div>
-    <header>
-    <iframe 
+    <div id="pull-to-refresh"> <img alt="Pull to Refresh" src="animation/refresh.gif" /> </div>
+       
+    <div class="header-slider">
+        <button class="nav-arrow prev">❮</button>
+        <button class="nav-arrow next">❯</button> <img alt="Banner 1" class="active" src="images/banner/banner 1.jpg" /> <img alt="Banner 2" src="images/banner/banner 2.jpg" /> <img alt="Banner 3" src="images/banner/banner 3.jpg" /> <img alt="Banner 4" src="images/banner/banner 4.jpg" /> <img alt="Banner 5" src="images/banner/banner 5.jpg" /> <img alt="Banner 6" src="images/banner/banner 6.jpg" /> <img alt="Banner 7" src="images/banner/banner 7.jpg" /> <img alt="Banner 8" src="images/banner/banner 8.jpg" /> <img alt="Banner 9" src="images/banner/banner 9.jpg" /> <img alt="Banner 10" src="images/banner/banner 10.jpg" /> <img alt="Banner 11" src="images/banner/banner 11.jpg" /> <img alt="Banner 12" src="images/banner/banner 12.jpg" /> <img alt="Banner 13" src="images/banner/banner 13.jpg" /> <img alt="Banner 14" src="images/banner/banner 14.jpg" /> </div>
+
+     <iframe 
         src="https://www.youtube.com/embed/SrMqaz4Hyqc?autoplay=1&loop=1&modestbranding=1&playlist=SrMqaz4Hyqc&rel=0" 
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen" 
         allowfullscreen
         title="Video Promosi E-KARYA"
         style="border: none;">
     </iframe>
-</header>
-
-    <img src="animation/E-KARYA.gif" alt="Logo E-KARYA" class="logo">
-    <div class="nav-buttons">
-        <button onclick="location.href='sambutan.html'" aria-label="Sambutan Lurah"><img src="animation/Lurah.gif" alt="">Sambutan Lurah</button>
-        <button onclick="location.href='struktur.html'" aria-label="Struktur Organisasi"><img src="animation/Staff.gif" alt="">Struktur Organisasi</button>
-        <button onclick="location.href='profil.html'" aria-label="Profil Kelurahan"><img src="animation/Kelurahan.gif" alt="">Profil Kelurahan</button>
-        <button onclick="location.href='kaling.html'" aria-label="Profil Lingkungan"><img src="animation/Kaling.gif" alt="">Profil Lingkungan</button>
-        <button onclick="location.href='digilib.html'" aria-label="Perpustakaan Digital"><img src="animation/pdf.gif" alt="">Gemar Membaca<br>(e-Book)</button>
-        <button onclick="location.href='surat.html'" aria-label="Surat Pengantar"><img src="animation/Document.gif" alt="">Surat Pengantar</button>
-        <button onclick="location.href='alamat.html'" aria-label="Alamat Lengkap"><img src="animation/Gmaps.gif" alt="">Alamat Lengkap</button>
-        <button onclick="location.href='kontak.html'" aria-label="Kontak Operator Kelurahan"><img src="animation/Contact.gif" alt="">Kontak Operator</button>
-        <button onclick="location.href='pelayanan.html'" aria-label="Pelayanan Warga"><img src="animation/Service.gif" alt="">Pelayanan Warga</button>
-        <button onclick="location.href='bansos.html'" aria-label="Cek BANSOS"><img src="animation/Transfer.gif" alt="">Cek BANSOS</button>
-        <button onclick="location.href='onlineshop.html'" aria-label="Produk Warga"><img src="animation/Shop.gif" alt="">Produk Warga</button>
-        <button onclick="location.href='tanya.html'" aria-label="Tanya Jawab"><img src="animation/Tanya.gif" alt="">Tanya Jawab</button>
-        <button onclick="location.href='syarat.html'" aria-label="Syarat dan Ketentuan"><img src="animation/Syarat.gif" alt="">Syarat & Ketentuan</button>
-        <button onclick="location.href='kebijakan.html'" aria-label="Kebijakan Aplikasi"><img src="animation/Kebijakan.gif" alt="">Kebijakan Aplikasi</button>
-        <button onclick="location.href='ekarya.html'" aria-label="Tentang Aplikasi"><img src="animation/Tentang.gif" alt="">Tentang Aplikasi</button>
+    
+    <!--
+    <div class="animated-background">
+        <video autoplay="" loop="" muted="" playsinline="">
+            <source src="background/background1.mp4" type="video/mp4" /> Your browser does not support the video tag. </video>
     </div>
-    <footer>
-        <p>&copy; 2025 E-KARYA (Smart City)<br>Licensed By <b>Developer Lombok IT</b><br>Coded With <b>SQAI</b> (Squirrel Artificial Intelligence)</p>
+    -->
+
+    
+    <div class="animated-background">
+        <img src="background/background.jpg" alt="Background Image">
+    </div>
+
+
+            <div class="overlay-foreground" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:10;pointer-events:none;"><img alt="Logo My Edu-Preneurship" class="logo pulse-shimmer" src="images/logo/ekarya.png" style="pointer-events:auto; z-index:11; position:relative;" />
+            <div class="main-menu-title" style="pointer-events:auto; z-index:11; position:relative;"> <span class="m">M</span> <span class="a">A</span> <span class="i">I</span> <span class="n">N</span> <img alt="Refresh" class="refresh-icon" onclick="window.location.reload();" src="animation/refresh.gif" /> <span class="m2">M</span> <span class="e">E</span> <span class="n2">N</span> <span class="u">U</span> </div>
+            <div class="nav-buttons" style="pointer-events:auto; z-index:11; position:relative;">
+            <button onclick="location.href='sambutan.html'" aria-label="Sambutan Lurah"><img src="animation/lurah.gif" alt="">Sambutan Lurah</button>
+            <button onclick="location.href='struktur.html'" aria-label="Struktur Organisasi"><img src="animation/staff.gif" alt="">Struktur Organisasi</button>
+            <button onclick="location.href='profil.html'" aria-label="Profil Kelurahan"><img src="animation/kelurahan.gif" alt="">Profil Kelurahan</button>
+            <button onclick="location.href='kaling.html'" aria-label="Profil Lingkungan"><img src="animation/kaling.gif" alt="">Profil Lingkungan</button>
+            <button onclick="location.href='digilib.html'" aria-label="Perpustakaan Digital"><img src="animation/pdf.gif" alt="">Gemar Membaca<br>(e-Book)</button>
+            <button onclick="location.href='surat.html'" aria-label="Surat Pengantar"><img src="animation/document.gif" alt="">Surat Pengantar</button>
+            <button onclick="location.href='alamat.html'" aria-label="Alamat Lengkap"><img src="animation/gmaps.gif" alt="">Alamat Lengkap</button>
+            <button onclick="location.href='kontak.html'" aria-label="Kontak Operator Kelurahan"><img src="animation/contact.gif" alt="">Kontak Operator</button>
+            <button onclick="location.href='pelayanan.html'" aria-label="Pelayanan Warga"><img src="animation/service.gif" alt="">Pelayanan Warga</button>
+            <button onclick="location.href='bansos.html'" aria-label="Cek BANSOS"><img src="animation/transfer.gif" alt="">Cek BANSOS</button>
+            <button onclick="location.href='onlineshop.html'" aria-label="Produk Warga"><img src="animation/shop.gif" alt="">Produk Warga</button>
+            <button onclick="location.href='tanya.html'" aria-label="Tanya Jawab"><img src="animation/tanya.gif" alt="">Tanya Jawab</button>
+            <button onclick="location.href='syarat.html'" aria-label="Syarat dan Ketentuan"><img src="animation/syarat.gif" alt="">Syarat & Ketentuan</button>
+            <button onclick="location.href='kebijakan.html'" aria-label="Kebijakan Aplikasi"><img src="animation/kebijakan.gif" alt="">Kebijakan Aplikasi</button>
+            <button onclick="location.href='ekarya.html'" aria-label="Tentang Aplikasi"><img src="animation/tentang.gif" alt="">Tentang Aplikasi</button>
+  </div>
+    </div>
+    <!-- Logo di atas tombol menu -->
+    <!-- Judul di atas tombol menu -->
+    <!-- Footer -->
+    <script>
+        function hideSplash() {
+            localStorage.setItem("splashShown", "true");
+            document.getElementById("splashScreen").classList.add("hidden");
+        }
+
+        function enterWebsite() {
+            document.getElementById("splashScreen").classList.add("hidden");
+            setTimeout(() => {
+                document.getElementById("splashScreen").style.display = "none";
+                document.getElementById("mainContent").style.display = "block";
+            }, 1000);
+        }
+
+        function openDrawer() {
+            const drawer = document.getElementById("drawer");
+            if (drawer.style.left === "0px") {
+                drawer.style.left = "-250px";
+            }
+            else {
+                drawer.style.left = "0px";
+            }
+        }
+        // Tutup drawer saat klik di luar area
+        document.addEventListener("click", function (event) {
+            const drawer = document.getElementById("drawer");
+            const button = document.querySelector(".drawer-button");
+            if (!drawer.contains(event.target) && !button.contains(event.target)) {
+                drawer.style.left = "-250px";
+            }
+        });
+        let startY = 0;
+        let isRefreshing = false;
+        const refreshIcon = document.getElementById("pull-to-refresh");
+        document.addEventListener("touchstart", (e) => {
+            if (window.scrollY === 0) { // Pastikan hanya bekerja di atas halaman
+                startY = e.touches[0].clientY;
+            }
+        });
+        document.addEventListener("touchmove", (e) => {
+            if (window.scrollY !== 0) return; // Hanya aktif saat di atas halaman
+            let currentY = e.touches[0].clientY;
+            let distance = currentY - startY;
+            if (distance > 30) { // Jika tarik lebih dari 30px, mulai muncul
+                refreshIcon.style.top = Math.min(distance - 50, 150) + "px";
+            }
+            if (distance > 120) { // Jika tarik lebih dari 120px, ubah warna jadi siap refresh
+                refreshIcon.style.opacity = "1";
+            }
+        });
+        document.addEventListener("touchend", () => {
+            if (parseInt(refreshIcon.style.top) > 100 && !isRefreshing) {
+                isRefreshing = true;
+                refreshIcon.style.top = "100px"; // Biarkan di tengah sebentar
+                setTimeout(() => {
+                    window.location.reload(); // Refresh setelah jeda
+                }, 500);
+            }
+            else {
+                refreshIcon.style.top = "-100px"; // Sembunyikan kembali jika tidak cukup jauh
+            }
+        });
+        const images = document.querySelectorAll(".header-slider img");
+        const prevButton = document.querySelector(".prev");
+        const nextButton = document.querySelector(".next");
+        let currentIndex = 0;
+        let autoSlide;
+
+        function changeBanner(next = true) {
+            images[currentIndex].classList.remove("active");
+            if (next) {
+                currentIndex = (currentIndex + 1) % images.length; // Geser ke kanan
+            }
+            else {
+                currentIndex = (currentIndex - 1 + images.length) % images.length; // Geser ke kiri
+            }
+            images[currentIndex].classList.add("active");
+        }
+
+        function startAutoSlide() {
+            autoSlide = setInterval(() => changeBanner(true), 5000); // Ubah otomatis slider setiap 5 detik
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlide);
+            startAutoSlide();
+        }
+        // Event listener untuk tombol navigasi
+        prevButton.addEventListener("click", () => {
+            changeBanner(false);
+            resetAutoSlide();
+        });
+        nextButton.addEventListener("click", () => {
+            changeBanner(true);
+            resetAutoSlide();
+        });
+        // Swipe gesture support untuk perangkat touchscreen
+        let touchStartX = 0;
+        let touchEndX = 0;
+        document.querySelector(".header-slider").addEventListener("touchstart", (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+        document.querySelector(".header-slider").addEventListener("touchend", (e) => {
+            touchEndX = e.changedTouches[0].clientX;
+            if (touchStartX > touchEndX + 50) {
+                changeBanner(true); // Swipe kiri ke kanan
+            }
+            else if (touchStartX < touchEndX - 50) {
+                changeBanner(false); // Swipe kanan ke kiri
+            }
+            resetAutoSlide();
+        });
+        images[currentIndex].classList.add("active");
+        startAutoSlide();
+        window.addEventListener("DOMContentLoaded", () => {
+            const splashShown = localStorage.getItem("splashShown");
+            if (splashShown === "true") {
+                document.getElementById("splashScreen").classList.add("hidden");
+            }
+            else {
+                document.getElementById("splashScreen").classList.remove("hidden");
+            }
+        });
+    </script>
+    <footer style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: rgba(0, 0, 0, 0.7); padding: 5px; font-size: 12px; text-align: center; z-index: 20;"> © 2025 <b>E-KARYA (Smart City)</b>
+        <br/> Licensed By <b>Developer Lombok IT</b>
+        <br> Coded With <b>SQAI</b> (Squirrel Artificial Intelligence)
     </footer>
 </body>
 

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lisensi & Atribusi - My Edu-Prreneurship</title>
+    <style>
+        /* Background utama dengan gambar */
+        
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('images/logo/sqai.jpg') no-repeat center center fixed;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    position: relative;
+    z-index: 0; /* Pastikan z-index ada */
+}
+
+/* Lapisan transparan di atas gambar latar */
+body::before {
+    content: "";
+    position: fixed; /* Gunakan fixed agar menutupi seluruh viewport meskipun scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 2, 2, 0.5); /* Transparan hitam 50% */
+    z-index: -1; /* Tetap di belakang semua konten */
+}
+
+        /* Animasi untuk logo */
+        
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulsate {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.9;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes shimmerGlow {
+            0% {
+                filter: brightness(1);
+                box-shadow: none;
+            }
+            50% {
+                filter: brightness(1.5);
+            }
+            100% {
+                filter: brightness(1);
+                box-shadow: none;
+            }
+        }
+        
+        .logo-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 150px;
+            height: 150px;
+            opacity: 0;
+            animation: zoomIn 1.5s ease-out forwards, pulsate 2s infinite 2s, shimmerGlow 2s infinite 2s;
+            transition: filter 0.3s ease, box-shadow 0.3s ease;
+        }
+        /* Animasi Shimmering untuk Logo Lisensi */
+        
+        @keyframes shimmering {
+            0% {
+                opacity: 1;
+                filter: brightness(1);
+            }
+            50% {
+                opacity: 0.8;
+                filter: brightness(1.5);
+            }
+            100% {
+                opacity: 1;
+                filter: brightness(1);
+            }
+        }
+        /* Tambahkan efek shimmer setelah logo muncul */
+        /* Ukuran logo lisensi */
+        
+        .license-logo img {
+            width: 200px;
+            /* Ubah ukuran sesuai kebutuhan */
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            opacity: 0;
+            visibility: hidden;
+            animation: fadeInDelayed 1s forwards 0.3s, shimmering 2s infinite 1s;
+        }
+        /* Header (disembunyikan awalnya, muncul dengan fade in) */
+        
+        header {
+            text-align: center;
+            display: none;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+        /* Kontainer utama */
+        
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.86);
+            color: black;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            text-align: justify;
+        }
+        
+        h1,
+        h2 {
+            color: red;
+            text-align: center;
+        }
+        /* Efek Glow */
+        
+        .glow-text {
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        /* Efek glow warna merah */
+        
+        .red-glow {
+            color: red;
+            text-shadow: 0 0 1px red, 0 0 3px red, 0 0 9px darkred;
+        }
+        /* Efek glow warna teal */
+        
+        .green-glow {
+            color: lightseagreen;
+            text-shadow: 0 0 1px teal, 0 0 3px teal, 0 0 9px darkcyan;
+        }
+        /* Efek glow warna putih */
+        
+        .white-glow {
+            color: white;
+            text-shadow: 0 0 1px white, 0 0 3px white, 0 0 9px gray;
+        }
+        /* Tombol Container */
+        
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        /* Tombol */
+        
+        .btn {
+            position: relative;
+            background: teal;
+            color: white;
+            border: none;
+            padding: 12px 12px;
+            cursor: pointer;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            opacity: 1;
+        }
+        /* Efek glossy mengalir */
+        
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0.2) 80%);
+            transform: skewX(-20deg);
+            transition: left 0.6s ease-in-out;
+        }
+        /* Efek hover */
+        
+        .btn:hover {
+            background: red;
+            /* Warna merah lebih terang */
+            transform: scale(1.1);
+            box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.6);
+        }
+        /* Animasi glossy aktif saat hover */
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        /* Efek klik */
+        
+        .btn:active {
+            transform: scale(0.95);
+            background: rgba(255, 0, 0, 1);
+        }
+        /* Tombol hidden */
+        
+        .hidden {
+            display: none;
+        }
+        /* Animasi tombol */
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in forwards;
+        }
+        /* Layout untuk tombol atribusi agar sejajar */
+        
+        .attribution-list {
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .attribution-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .attribution-text {
+            flex: 1;
+            text-align: justify;
+            /* Membuat teks rata kiri-kanan */
+        }
+        
+        .link-btn {
+            background: green;
+            color: white;
+            border: none;
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 12px;
+            transition: background 0.3s, transform 0.2s;
+             margin-left: 15px; /* Memberi jarak antara teks dan tombol */
+        }
+        
+        .link-btn:hover {
+            background: teal;
+            transform: scale(1.05);
+        }
+        
+        pre {
+            white-space: pre-wrap;
+            /* Memungkinkan teks wrap ke baris berikutnya */
+            word-wrap: break-word;
+            /* Memastikan kata panjang terpotong dengan baik */
+            overflow-x: auto;
+            /* Menambahkan scrollbar horizontal jika teks terlalu panjang */
+            background: rgba(255, 255, 255, 0.86);
+            /* Memberikan warna latar agar terlihat lebih baik */
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        /* Semua teks di dalam lisensi dan atribusi disembunyikan sejak awal */
+        
+        .hidden-text {
+            opacity: 0;
+            visibility: hidden;
+            /* Agar elemen tidak terlihat sama sekali */
+        }
+        /* Efek animasi untuk memunculkan teks */
+        
+        @keyframes fadeInDelayed {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+                visibility: visible;
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+                visibility: visible;
+            }
+        }
+        
+        .fade-in-delayed {
+            animation: fadeInDelayed 0.8s forwards;
+        }
+        
+        footer {
+            text-align: center;
+            font-size: 12px;
+            padding: 10px;
+            background: rgba(10, 2, 2, 0.5);
+            color: white;
+            margin-top: 20px;
+            border-radius: 0 0 0px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Logo -->
+    <div class="logo-container"> <img src="images/logo/ekarya.png" alt="Logo My Edu-Prreneurship" class="logo"> </div>
+    <!-- Header (disembunyikan awalnya) -->
+    <header>
+        <h1 class="glow-text">
+    <span class="red-glow">LISENSI</span> 
+    <span class="green-glow">&</span> 
+    <span class="white-glow">ATRIBUSI</span>
+</h1>
+        <p>Aplikasi <strong>E-KARYA (Smart City)</strong></p>
+    </header>
+    <!-- Tombol untuk membuka informasi -->
+    <div class="buttons">
+        <button id="toggleLicense" class="btn">Lihat Lisensi</button>
+        <button id="toggleAttribution" class="btn">Lihat Atribusi</button>
+    </div>
+    <!-- Konten -->
+    <div class="container hidden" id="licenseContainer">
+        <section id="licenseSection">
+            <h2>LISENSI</h2>
+            <!-- Logo Lisensi dipindahkan ke atas sebelum teks -->
+            <div class="license-logo"> <img src="images/logo/sqai logo.png" alt="Logo Lisensi" class="logo-small"> </div>
+            <p>Aplikasi ini dilisensikan dengan ketentuan khusus. Hak cipta kode program dipegang oleh <strong>Developer Lombok IT</strong> yang diberi nama <strong>SQAI (Squirrel Artificial Intelligence)</strong>.</p>
+            <p>Dalam rangka pelindungan ciptaan di bidang ilmu pengetahuan, seni dan sastra berdasarkan <strong>Undang-Undang Nomor 28 Tahun
+    2014 tentang Hak Cipta</strong>, produk <strong>SQAI (Squirrel Artificial Intelligence)</strong> telah resmi terdaftar didalam database <strong>Direktorat Jenderal Kekayaan Intelektual (DJKI) Kementerian Hukum Republik Indonesia</strong> dengan <strong>Paten No. EC002024206776</strong>, sejak <strong>16 Oktober 2024</strong>. Segala bentuk penggunaan kode ini harus mengikuti ketentuan hukum yang berlaku.</p>
+            <p>Kode ini <strong>hanya boleh dimodifikasi</strong> setelah mendapatkan izin dan persetujuan resmi tertulis dari <strong>CEO Developer Lombok IT</strong>. Segala bentuk perubahan atau pengembangan harus melalui proses perizinan yang sah.</p>
+            <p>Kode ini <strong>tidak boleh diperjualbelikan oleh pengguna (peserta pelatihan resmi yang sudah terdaftar didatabase Developer Lombok IT)</strong> dalam bentuk apa pun karena telah memiliki ketetapan hukum <strong>Hak Atas Kekayaan Intelektual (HAKI)</strong> dari Pemerintah Indonesia. Meski demikikan <strong>CEO Developer Lombok IT</strong> akan mengguanakan Koding resminya ini sebagai materi pelatihan seterusnya secara online/offline.</p>
+            <p><strong>Dilarang</strong> menggunakan kode ini sebagai materi penelitian yang mendapatkan anggaran dari pemerintah atau instansi lainnya tanpa izin resmi dari <strong>CEO Developer Lombok IT</strong>. Pelanggaran terhadap ketentuan ini dapat dikenakan sanksi hukum sesuai dengan peraturan yang berlaku.</p>
+            <div> <pre>
+<b>Hak Cipta (c) 2025 Developer Lombok IT - SQAI (Squirrel Artificial Intelligence)</b>
+
+<b>Diberikan izin secara terbatas kepada siapa saja yang mendapatkan salinan perangkat lunak ini dan file dokumentasi terkait ("Perangkat Lunak"), dengan ketentuan bahwa pengguna dilarang memperjualbelikan kode ini dalam bentuk apa pun.</b>
+
+<b>Segala bentuk modifikasi hanya dapat dilakukan setelah memperoleh izin resmi dari CEO Developer Lombok IT.</b>
+
+<b>Hak Kekayaan Intelektual Koding Ini telah didaftarkan dan dilindungi oleh hukum yang berlaku di Indonesia.</b>
+            </pre> </div>
+        </section>
+    </div>
+    <!-- Kontainer Atribusi -->
+    <!-- Kontainer Atribusi -->
+    <div class="container hidden" id="attributionContainer">
+        <section id="attributionSection">
+            <h2>ATRIBUSI</h2>
+            <div class="license-logo"> <img src="images/logo/ekarya.png" alt="Logo Lisensi" class="logo-small"> </div>
+            <p><strong>Koding Resmi Developer Lombok IT yang diberi nama SQAI (Squirrel Artificial Intelligence)</strong> ini memiliki fitur utama yang mana sudah disesuaikan dan akan terus menyesuaikan konsep <strong>AI (Artificial Intelligence)</strong> apapaun. Sehingga, memudahkan para pengguna atau developer lain menggunakannya. Berikut adalah daftar fasilitas yang digunakan dalam pengembangan aplikasi <strong>E-KARYA (Smart City)</strong> ini:</p>
+            <ul class="attribution-list">
+                <li class="attribution-item"> <span class="attribution-text">1. <strong>ChatGPT Code Generator</strong> - AI yang membantu dalam penulisan dan optimasi kode.</span>
+                    <button class="link-btn" onclick="window.open('https://chatgpt.com/g/g-CfL5dQPbs-code-generator', '_blank')">Kunjungi</button>
+                </li>
+                <li class="attribution-item"> <span class="attribution-text">2. <strong>Icons8</strong> - Sumber ikon berkualitas tinggi.</span>
+                    <button class="link-btn" onclick="window.open('https://www.icons8.com', '_blank')">Kunjungi</button>
+                </li>
+                <li class="attribution-item"> <span class="attribution-text">3. <strong>FlatIcon</strong> - Platform penyedia ikon vektor gratis.</span>
+                    <button class="link-btn" onclick="window.open('https://www.flaticon.com', '_blank')">Kunjungi</button>
+                </li>
+                <li class="attribution-item"> <span class="attribution-text">4. <strong>Pinterest</strong> - Inspirasi desain UI/UX dari berbagai kreator.</span>
+                    <button class="link-btn" onclick="window.open('https://www.pinterest.com', '_blank')">Kunjungi</button>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <!-- Footer -->
+    <footer> &copy; 2025 <strong>E-KARYA (Smart City)</strong>
+        <br /> Licensed By <b>Developer Lombok IT</b>
+        <br /> Coded With <b>SQAI</b> (Squirrel Artificial Intelligence)
+    </footer>
+    
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const header = document.querySelector("header");
+    const toggleLicense = document.getElementById("toggleLicense");
+    const toggleAttribution = document.getElementById("toggleAttribution");
+    const licenseContainer = document.getElementById("licenseContainer");
+    const attributionContainer = document.getElementById("attributionContainer");
+    const licenseLogo = document.querySelector(".license-logo");
+
+    let licenseShown = false;
+    let attributionShown = false;
+    let licenseTextShown = false;
+    let attributionTextShown = false;
+
+    // Awalnya sembunyikan kontainer
+    licenseContainer.classList.add("hidden");
+    attributionContainer.classList.add("hidden");
+
+    // Sembunyikan semua teks dulu
+    document.querySelectorAll("#licenseContainer p, #licenseContainer pre, #attributionContainer li").forEach(item => {
+        item.classList.add("hidden-text");
+    });
+
+    toggleLicense.classList.add("hidden");
+    toggleAttribution.classList.add("hidden");
+
+    // Munculkan header
+    setTimeout(() => {
+        header.style.display = "block";
+        header.classList.add("fade-in");
+    }, 1800);
+
+    // Tombol muncul setelah header
+    setTimeout(() => {
+        toggleLicense.classList.remove("hidden");
+        toggleLicense.classList.add("fade-in");
+    }, 2800);
+    setTimeout(() => {
+        toggleAttribution.classList.remove("hidden");
+        toggleAttribution.classList.add("fade-in");
+    }, 3200);
+
+    function showTextOneByOne(container) {
+        const items = container.querySelectorAll("p, pre, li");
+        items.forEach((item, index) => {
+            setTimeout(() => {
+                item.classList.remove("hidden-text");
+                item.classList.add("fade-in-delayed");
+            }, index * 400);
+        });
+    }
+
+    toggleLicense.addEventListener("click", function () {
+        if (!licenseShown) {
+            licenseContainer.classList.remove("hidden");
+            attributionContainer.classList.add("hidden");
+            licenseShown = true;
+            attributionShown = false;
+
+            // Tampilkan teks hanya sekali
+            if (!licenseTextShown) {
+                showTextOneByOne(licenseContainer);
+                licenseTextShown = true;
+            }
+
+            // Tampilkan logo setelah delay
+            setTimeout(() => {
+                licenseLogo.style.visibility = "visible";
+                licenseLogo.style.opacity = "1";
+                licenseLogo.classList.add("shimmering-effect");
+            }, 1000);
+        } else {
+            licenseContainer.classList.add("hidden");
+            licenseShown = false;
+        }
+    });
+
+    toggleAttribution.addEventListener("click", function () {
+        if (!attributionShown) {
+            attributionContainer.classList.remove("hidden");
+            licenseContainer.classList.add("hidden");
+            attributionShown = true;
+            licenseShown = false;
+
+            if (!attributionTextShown) {
+                showTextOneByOne(attributionContainer);
+                attributionTextShown = true;
+            }
+        } else {
+            attributionContainer.classList.add("hidden");
+            attributionShown = false;
+        }
+    });
+});
+</script>
+
+</body>
+
+</html>
